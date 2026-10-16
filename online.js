@@ -35,7 +35,7 @@
       ctx.peer.on('disconnected',()=>{if(current!==ctx)return;if(!ctx.connected){ctx.connectionStatus='连接断开，正在重连…';render()}setTimeout(()=>{if(current===ctx&&ctx.peer.disconnected&&!ctx.peer.destroyed){try{ctx.peer.reconnect()}catch{}}},2000)});
       ctx.peer.on('error',error=>{if(current!==ctx)return;ctx.error=error.type==='peer-unavailable'?'暂时找不到这个房间，确认房主还在页面里。':error.type==='unavailable-id'?'房间仍在恢复中，请稍等，或重新开一间。':'暂时没有连上。双方可以换个网络，再点重连。';ctx.connectionStatus='还没连上';render()});
       ctx.timer=setInterval(()=>{if(current!==ctx||ctx.closed)return;if(ctx.conn?.open){send({type:'ping'});if(ctx.lastSeen&&Date.now()-ctx.lastSeen>18000){ctx.connected=false;ctx.connectionStatus='对方可能掉线了，正在等重连…';ctx.conn.close();render()}}else if(role==='guest'&&ctx.peer?.open&&!ctx.connecting)connectGuest()},4000);
-      ctx.timeout=setTimeout(()=>{if(current===ctx&&!ctx.connected){ctx.error=role==='host'?'房间已准备好。把链接发给好友，让对方打开后点加入房间。':'还没收到房主回应。如果双方都在，可能是当前网络限制了直连，请换个网络重试。';render()}},22000);
+      ctx.timeout=setTimeout(()=>{if(current===ctx&&!ctx.connected&&(role==='guest'||!ctx.peer?.open)){ctx.error=role==='host'?'暂时没有连上联机服务，请检查网络或重试。':'还没收到房主回应。如果双方都在，可能是当前网络限制了直连，请换个网络重试。';render()}},22000);
     }catch(error){if(current===ctx){ctx.error=error.message||'没能建立房间，请重试。';render()}}
   }
   function send(packet){const c=current;if(c?.conn?.open){try{c.conn.send({schema:1,room:c.room,...packet});return true}catch{}}return false}
@@ -53,8 +53,8 @@
   }
   async function receive(packet){const c=current;if(!c||c.closed)return;
     if(packet.type==='ping'){send({type:'pong'});return}if(packet.type==='pong'){if(!c.connected){c.connected=true;c.error='';render()}return}
-    if(packet.type==='reject'){c.closed=true;c.connected=false;c.error=String(packet.reason||'没有加入房间。');checkpoint();c.conn?.close();render();return}
-    if(packet.type==='leave'){c.closed=true;c.connected=false;c.error='对方离开了房间。想继续玩，可以重新开一间。';checkpoint();c.conn?.close();render();return}
+    if(packet.type==='reject'){c.closed=true;c.connected=false;c.connectionStatus='房间已结束';c.error=String(packet.reason||'没有加入房间。');checkpoint();c.conn?.close();render();return}
+    if(packet.type==='leave'){c.closed=true;c.connected=false;c.connectionStatus='房间已结束';c.error='对方离开了房间。想继续玩，可以重新开一间。';checkpoint();c.conn?.close();render();return}
     if(c.role==='host'){
       const h=c.host,s=h.s;
       switch(packet.type){case'commit':h.commit(1,packet.round,packet.index,packet.hash);break;case'request-reveal':h.requestReveal(packet.round,packet.index);break;case'reveal':await h.reveal(1,packet.round,packet.index,packet.vote,packet.salt);break;case'next':h.advance(1,packet.round,packet.index);break;case'rematch':h.rematch(1,pickQuestions(s.fields));break;case'sync':break;default:return}
@@ -103,7 +103,7 @@
     if(c.error&&!c.closed)body+=`<div class="connection-error" role="status"><p>${esc(c.error)}</p><button class="soft" data-online="retry">重新连接</button></div>`;
     layout(`<div class="game online-game">${head}${body}<p class="online-room-label">房间 ${esc(c.room)}</p></div>`);
   }
-  function leavePrompt(target='home'){modal('要离开这个房间吗？','<p>离开后，好友会收到提示。这局不会自动算输赢。</p><button class="primary" data-online="leave" data-target="'+(target==='library'?'library':'home')+'">离开房间</button>')}
+  function leavePrompt(target='home'){if(current?.closed){leave(target);return}modal('要离开这个房间吗？','<p>离开后，好友会收到提示。这局不会自动算输赢。</p><button class="primary" data-online="leave" data-target="'+(target==='library'?'library':'home')+'">离开房间</button>')}
   function leave(target='home'){const c=current;if(c){send({type:'leave'});c.closed=true;checkpoint();clearInterval(c.timer);clearTimeout(c.timeout);setTimeout(()=>{c.conn?.close();c.peer?.destroy()},200);current=null}history.replaceState(null,'',location.pathname+location.search);$('#modal')?.close();mode='solo';target==='library'?library():home();window.scrollTo(0,0)}
   function retry(){const c=current;if(!c||c.closed)return;c.error='';if(!c.peer||c.peer.destroyed){const resume=saved();current=null;enter(resume.role,resume.room,resume);return}if(c.peer.disconnected){try{c.peer.reconnect()}catch{}}if(c.role==='guest'){c.connecting=false;c.conn?.close();connectGuest()}else send({type:'state',state:c.host.publicState()});render()}
   document.addEventListener('click',async event=>{const button=event.target.closest('[data-online]');if(!button||button.disabled)return;const action=button.dataset.online;
@@ -122,6 +122,7 @@
   window.PaperOnline={get active(){return !!current},open(){enter('host',newCode())},leavePrompt};
   if(hashRoom())mode='online';home();
 })();
+
 
 
 
