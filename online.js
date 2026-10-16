@@ -3,13 +3,13 @@
 (function(){
   const Core=window.PaperOnlineCore,KEY='paperparty:online:v1',PREFIX='paper-party-v1-',ALPHABET='23456789ABCDEFGHJKLMNPQRSTUVWXYZ';
   let current=null,peerLoading=null;
-  const saved=()=>{try{return JSON.parse(sessionStorage.getItem(KEY))}catch{return null}};
+  const saved=()=>{try{const session=JSON.parse(sessionStorage.getItem(KEY));if(session)return session;const backup=JSON.parse(localStorage.getItem(KEY+':recovery'));return backup&&Date.now()-backup.savedAt<86400000?backup:null}catch{return null}};
   const nickname=()=>($('#online-name')?.value.trim()||store.get('online-name','')||'论文侦探').slice(0,12);
   function roomFrom(value){try{if(value.includes('://'))value=new URLSearchParams(new URL(value).hash.slice(1)).get('room')||''}catch{return ''}value=value.trim().toUpperCase().replace(/[\s-]/g,'');return /^[23456789ABCDEFGHJKLMNPQRSTUVWXYZ]{12}$/.test(value)?value:''}
   const hashRoom=()=>roomFrom(new URLSearchParams(location.hash.slice(1)).get('room')||'');
   const newCode=()=>Array.from(crypto.getRandomValues(new Uint8Array(12)),x=>ALPHABET[x%ALPHABET.length]).join('');
   function loadPeer(){if(window.Peer)return Promise.resolve();if(peerLoading)return peerLoading;peerLoading=new Promise((resolve,reject)=>{const script=document.createElement('script');script.src='peerjs.min.js';const fail=()=>{clearTimeout(timer);peerLoading=null;script.remove();reject(Error('联机组件没有加载好，请联网重试。'))};const timer=setTimeout(fail,12000);script.onload=()=>{clearTimeout(timer);window.Peer?resolve():fail()};script.onerror=fail;document.head.append(script)});return peerLoading}
-  function checkpoint(){if(!current)return;try{sessionStorage.setItem(KEY,JSON.stringify({role:current.role,room:current.room,name:current.name,token:current.token,fields:current.fields,version:current.version,snapshot:current.host?.s||null,state:current.state,secret:current.secret,closed:current.closed}))}catch{}}
+  function checkpoint(){if(!current)return;const value=JSON.stringify({role:current.role,room:current.room,name:current.name,token:current.token,fields:current.fields,version:current.version,snapshot:current.host?.s||null,state:current.state,secret:current.secret,closed:current.closed,savedAt:Date.now()});try{sessionStorage.setItem(KEY,value)}catch{}try{localStorage.setItem(KEY+':recovery',value)}catch{}}
   window.onlineSetup=function(){const s=saved();return `<div class="online-setup"><label class="label" for="online-name">你的昵称</label><input class="online-input" id="online-name" maxlength="12" placeholder="比如：论文侦探" value="${esc(store.get('online-name',''))}"><div class="join-row"><label class="sr-only" for="online-code">房间号或邀请链接</label><input class="online-input" id="online-code" autocomplete="off" placeholder="房间号或好友的邀请链接" value="${esc(hashRoom())}"><button class="soft" data-online="join">加入房间</button></div>${s&&!s.closed?'<button class="link" data-online="resume">回到上次的房间 →</button>':''}<p class="mode-note">想当房主？选好下方领域，再点创建房间。</p></div>`};
   function persistName(name){store.set('online-name',name)}
   async function enter(role,code,resume){
@@ -33,8 +33,8 @@
       ctx.peer.on('open',()=>{if(current!==ctx)return;ctx.connectionStatus=role==='host'?'房间已开，等好友加入':'正在找房间…';ctx.error='';if(role==='guest')connectGuest();render()});
       ctx.peer.on('connection',conn=>{if(current!==ctx||role!=='host'){conn.close();return}bind(conn)});
       ctx.peer.on('disconnected',()=>{if(current!==ctx)return;if(!ctx.connected){ctx.connectionStatus='连接断开，正在重连…';render()}setTimeout(()=>{if(current===ctx&&ctx.peer.disconnected&&!ctx.peer.destroyed){try{ctx.peer.reconnect()}catch{}}},2000)});
-      ctx.peer.on('error',error=>{if(current!==ctx)return;ctx.error=error.type==='peer-unavailable'?'暂时找不到这个房间，确认房主还在页面里。':error.type==='unavailable-id'?'房间仍在恢复中，请稍等，或重新开一间。':'暂时没有连上。双方可以换个网络，再点重连。';ctx.connectionStatus='还没连上';render()});
-      ctx.timer=setInterval(()=>{if(current!==ctx||ctx.closed)return;if(ctx.conn?.open){send({type:'ping'});if(ctx.lastSeen&&Date.now()-ctx.lastSeen>18000){ctx.connected=false;ctx.connectionStatus='对方可能掉线了，正在等重连…';ctx.conn.close();render()}}else if(role==='guest'&&ctx.peer?.open&&!ctx.connecting)connectGuest()},4000);
+      ctx.peer.on('error',error=>{if(current!==ctx)return;ctx.error=error.type==='peer-unavailable'?'房主可能正在分享邀请，回来后会自动连接，房间号不用换。':error.type==='unavailable-id'?'正在恢复原来的房间，稍等一下会自动重试。':'暂时没有连上。双方可以换个网络，再点重连。';ctx.connectionStatus='正在等重连…';render()});
+      ctx.timer=setInterval(()=>{if(current!==ctx||ctx.closed||document.hidden)return;if(ctx.peer?.destroyed){retry();return}if(ctx.peer?.disconnected){try{ctx.peer.reconnect()}catch{}}if(ctx.conn?.open){send({type:'ping'});if(ctx.lastSeen&&Date.now()-ctx.lastSeen>30000){ctx.connected=false;ctx.connectionStatus='对方暂时切走了，回来后自动接着玩';ctx.conn.close();render()}}else if(role==='guest'&&ctx.peer?.open&&!ctx.connecting)connectGuest()},4000);
       ctx.timeout=setTimeout(()=>{if(current===ctx&&!ctx.connected&&(role==='guest'||!ctx.peer?.open)){ctx.error=role==='host'?'暂时没有连上联机服务，请检查网络或重试。':'还没收到房主回应。如果双方都在，可能是当前网络限制了直连，请换个网络重试。';render()}},22000);
     }catch(error){if(current===ctx){ctx.error=error.message||'没能建立房间，请重试。';render()}}
   }
@@ -48,7 +48,7 @@
       if(c.role==='host'&&conn!==c.conn)return;c.lastSeen=Date.now();
       c.messageChain=c.messageChain.then(()=>receive(packet)).catch(()=>{if(current===c){c.error='刚才的消息没有处理好，正在重新同步。';send({type:'sync'});render()}});
     });
-    conn.on('close',()=>{if(current!==c||c.conn!==conn)return;c.conn=null;c.connected=false;c.connecting=false;if(!c.closed){c.connectionStatus='连接中断，正在等对方回来…';render()}});
+    conn.on('close',()=>{if(current!==c||c.conn!==conn)return;c.conn=null;c.connected=false;c.connecting=false;if(!c.closed){c.connectionStatus='对方暂时切走了，回来后自动接着玩';render()}});
     conn.on('error',()=>{if(current===c&&c.conn===conn){c.connected=false;c.connecting=false;c.connectionStatus='连接不稳定，正在重连…';render()}});
   }
   async function receive(packet){const c=current;if(!c||c.closed)return;
@@ -86,7 +86,7 @@
   function render(){const c=current;if(!c)return;screen='online';const s=c.state,p=c.role==='host'?0:1;let body='';const head=`<div class="game-top"><button class="back" data-online="leave-prompt">← 离开房间</button>${connection()}</div>`;
     if(c.closed){body=`<section class="privacy-card"><div class="emoji">🍓</div><h2>这间房先收好</h2><p>${esc(c.error)}</p><button class="primary" data-online="leave">回去重新开一间 →</button></section>`}
     else if(!s||s.phase==='lobby'){
-      body=`<section class="qcard"><div class="qhead"><span class="tag">好友联机</span><span>每局 10 题</span></div><div class="qbody"><h2>${c.role==='host'?'房间开好了，叫上好友':'来，和好友猜一局'}</h2><p>${c.role==='host'?'复制链接发给好友，对方打开后点加入房间。房主页面记得保持打开。':'等房主准备好，就可以一起开猜。'}</p><div class="room-code">${esc(c.room.slice(0,4))} ${esc(c.room.slice(4,8))} ${esc(c.room.slice(8))}</div><div class="online-actions"><button class="soft" data-online="copy-link">复制邀请链接 ↗</button><button class="soft" data-online="copy-code">复制房间号</button></div><div class="room-players"><div>🍓 ${esc(s?.names[0]|| (c.role==='host'?c.name:'房主'))}<span>房主</span></div><div>🍋 ${esc(c.connected?(s?.names[1]||'好友'):'等好友加入')}<span>${c.connected?'已就位':'还没到'}</span></div></div>${s?`<div class="methods">${s.fields.map(f=>`<span>${esc(f)}</span>`).join('')}</div>`:''}${c.role==='host'?`<button class="primary confirm" data-online="start" ${!c.connected?'disabled':''}>一起开始，猜 10 题 ↗</button>`:'<p class="turn">等房主开始，不用抢答。</p>'}</div></section>`;
+      body=`<section class="qcard"><div class="qhead"><span class="tag">好友联机</span><span>每局 10 题</span></div><div class="qbody"><h2>${c.role==='host'?'房间开好了，叫上好友':'来，和好友猜一局'}</h2><p>${c.role==='host'?'点「分享给好友」发送邀请。切去发消息也没关系，回来后会自动恢复原房间。':'等房主准备好，就可以一起开猜。'}</p><div class="room-code">${esc(c.room.slice(0,4))} ${esc(c.room.slice(4,8))} ${esc(c.room.slice(8))}</div><div class="online-actions"><button class="primary" data-online="share">分享给好友 ↗</button><button class="soft" data-online="copy-link">复制邀请链接 ↗</button><button class="soft" data-online="copy-code">复制房间号</button></div><div class="room-players"><div>🍓 ${esc(s?.names[0]|| (c.role==='host'?c.name:'房主'))}<span>房主</span></div><div>🍋 ${esc(c.connected?(s?.names[1]||'好友'):'等好友加入')}<span>${c.connected?'已就位':'还没到'}</span></div></div>${s?`<div class="methods">${s.fields.map(f=>`<span>${esc(f)}</span>`).join('')}</div>`:''}${c.role==='host'?`<button class="primary confirm" data-online="start" ${!c.connected?'disabled':''}>一起开始，猜 10 题 ↗</button>`:'<p class="turn">等房主开始，不用抢答。</p>'}</div></section>`;
     }else if(s.phase==='finished'){
       const title=s.points[0]===s.points[1]?'平局！下局再比。':`${esc(s.names[s.points[0]>s.points[1]?0:1])} 赢啦！`;
       body=`<div class="result-title"><div class="emoji">✌️</div><h2>${title}</h2><p>这一局，十题都猜完了。</p></div><div class="scorecards">${s.names.map((name,i)=>`<div class="scorecard"><p>${esc(name)}${i===p?'（你）':''}</p><strong>${s.points[i]}</strong><p>猜对 ${s.points[i]/10} 题</p></div>`).join('')}</div><div class="result-actions"><button class="primary" data-online="rematch" ${s.next[p]||!c.connected?'disabled':''}>${s.next[p]?'等好友也准备好':'再比一局 ↗'}</button><button class="soft" data-online="leave-prompt">回首页</button></div><h3 class="section-title">这局都猜了什么</h3><div class="review-list">${s.history.map((item,i)=>{const q=BANK.find(q=>q.id===item.id);return `<details class="review-item"><summary><span class="rmark ${item.votes[p]!==q.tier?'bad':''}">${item.votes[p]===q.tier?'✓':'×'}</span><span class="rfield">${i+1} · ${esc(q.field)}</span><span>${tierLabel(q.tier)} ＋</span></summary><div class="rbody"><p>${q.summary.map(esc).join('')}</p><p>${esc(q.title)}</p><p>${esc(q.venue)} · ${q.year}</p><p>${s.names.map((name,j)=>`${esc(name)}：${tierLabel(item.votes[j])} ${item.votes[j]===q.tier?'✓':'×'}`).join('　')}</p><a href="${esc(safeUrl(q.url))}" target="_blank" rel="noopener noreferrer">查看论文与摘要 ↗</a></div></details>`}).join('')}</div>`;
@@ -105,22 +105,34 @@
   }
   function leavePrompt(target='home'){if(current?.closed){leave(target);return}modal('要离开这个房间吗？','<p>离开后，好友会收到提示。这局不会自动算输赢。</p><button class="primary" data-online="leave" data-target="'+(target==='library'?'library':'home')+'">离开房间</button>')}
   function leave(target='home'){const c=current;if(c){send({type:'leave'});c.closed=true;checkpoint();clearInterval(c.timer);clearTimeout(c.timeout);setTimeout(()=>{c.conn?.close();c.peer?.destroy()},200);current=null}history.replaceState(null,'',location.pathname+location.search);$('#modal')?.close();mode='solo';target==='library'?library():home();window.scrollTo(0,0)}
-  function retry(){const c=current;if(!c||c.closed)return;c.error='';if(!c.peer||c.peer.destroyed){const resume=saved();current=null;enter(resume.role,resume.room,resume);return}if(c.peer.disconnected){try{c.peer.reconnect()}catch{}}if(c.role==='guest'){c.connecting=false;c.conn?.close();connectGuest()}else send({type:'state',state:c.host.publicState()});render()}
+  function retry(){const c=current;if(!c||c.closed)return;c.error='';if(!c.peer||c.peer.destroyed){checkpoint();const resume=saved();clearInterval(c.timer);clearTimeout(c.timeout);current=null;if(resume&&!resume.closed)enter(resume.role,resume.room,resume);return}if(c.peer.disconnected){try{c.peer.reconnect()}catch{}}if(c.role==='guest'){c.connecting=false;c.conn?.close();connectGuest()}else send({type:'state',state:c.host.publicState()});render()}
+  const inviteUrl=c=>location.origin+location.pathname+'#room='+c.room;
+  async function copyInvite(value,isCode=false){try{await navigator.clipboard.writeText(value);toast(isCode?'房间号已复制，切去发送后再回来就好。':'邀请链接已复制，切去发送后再回来就好。')}catch{modal('把这个发给好友',`<input class="online-input" readonly value="${esc(value)}" aria-label="邀请信息"><p>长按或选中后复制，发完回来就能接着玩。</p>`)}}
+  async function shareInvite(){const c=current;if(!c||c.sharing)return;c.sharing=true;checkpoint();try{if(navigator.share)await navigator.share({title:'这也能发？',text:'来猜猜这些论文发在哪！打开链接，点加入房间。',url:inviteUrl(c)});else await copyInvite(inviteUrl(c))}catch(error){if(error.name!=='AbortError')await copyInvite(inviteUrl(c))}finally{c.sharing=false;if(current===c)wake()}}
+  function wake(){const c=current;if(!c||c.closed||document.hidden)return;c.lastSeen=Date.now();if(!c.peer)return;if(c.peer.destroyed||c.peer.disconnected||!c.conn?.open){retry();return}send({type:'ping'});if(c.role==='host')send({type:'state',state:c.host.publicState()});else send({type:'sync'});releaseIfNeeded()}
   document.addEventListener('click',async event=>{const button=event.target.closest('[data-online]');if(!button||button.disabled)return;const action=button.dataset.online;
     if(action==='join'){const room=roomFrom($('#online-code')?.value||'');if(!room){toast('粘贴邀请链接，或填入 12 位房间号。');return}const prior=saved();await enter('guest',room,prior?.role==='guest'&&prior.room===room&&!prior.closed?prior:null);return}
     if(action==='resume'){const prior=saved();if(prior&&!prior.closed)await enter(prior.role,prior.room,prior);return}
     if(action==='leave-prompt'){leavePrompt();return}if(action==='leave'){leave(button.dataset.target);return}if(action==='retry'){retry();return}
     const c=current;if(!c)return;const s=c.state,p=c.role==='host'?0:1;
-    if(action==='copy-link'||action==='copy-code'){const value=action==='copy-code'?c.room:location.origin+location.pathname+'#room='+c.room;try{await navigator.clipboard.writeText(value);toast(action==='copy-code'?'房间号已复制。':'邀请链接已复制，发给好友吧。')}catch{modal('把这个发给好友',`<input class="online-input" readonly value="${esc(value)}" aria-label="邀请信息"><p>长按或选中后复制。</p>`)}return}
+    if(action==='share'){await shareInvite();return}
+    if(action==='copy-link'||action==='copy-code'){checkpoint();await copyInvite(action==='copy-code'?c.room:inviteUrl(c),action==='copy-code');return}
     if(!s||!c.connected)return;
     switch(action){case'start':if(p===0)c.host.start(pickQuestions(s.fields));break;case'vote':if(s.phase==='choose'&&!s.commits[p]){c.draft=button.dataset.value;render()}break;case'lock':await lockVote();break;case'reveal':if(p===0)c.host.requestReveal(s.round,s.index);else send({type:'request-reveal',round:s.round,index:s.index});break;case'next':if(p===0)c.host.advance(0,s.round,s.index);else send({type:'next',round:s.round,index:s.index});break;case'rematch':if(p===0)c.host.rematch(0,pickQuestions(s.fields));else send({type:'rematch'});break;case'sync':if(p===0){send({type:'state',state:c.host.publicState()});releaseIfNeeded()}else send({type:'sync'});break}
   });
   window.addEventListener('online',()=>{if(current)retry()});
   document.addEventListener('change',event=>{if(event.target.id==='online-name')persistName(event.target.value.trim().slice(0,12))});
-  document.addEventListener('visibilitychange',()=>{if(!document.hidden&&current){if(current.role==='host')send({type:'state',state:current.host.publicState()});else send({type:'sync'});releaseIfNeeded()}});
-  window.addEventListener('beforeunload',()=>{checkpoint();current?.peer?.destroy()});
+  document.addEventListener('visibilitychange',()=>{if(document.hidden)checkpoint();else wake()});
+  window.addEventListener('pagehide',checkpoint);
+  window.addEventListener('pageshow',wake);
+  window.addEventListener('focus',wake);
+  document.addEventListener('freeze',checkpoint);
+  document.addEventListener('resume',wake);
   window.PaperOnline={get active(){return !!current},open(){enter('host',newCode())},leavePrompt};
   if(hashRoom())mode='online';home();
+  // Only this tab's saved session may resume automatically; an invitation in a
+  // different tab must still join as a guest rather than take over the host.
+  try{const prior=JSON.parse(sessionStorage.getItem(KEY));if(prior&&!prior.closed&&prior.room===hashRoom())enter(prior.role,prior.room,prior)}catch{}
 })();
 
 
