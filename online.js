@@ -30,12 +30,12 @@
       }
       checkpoint();await loadPeer();if(current!==ctx)return;
       ctx.peer=new Peer(role==='host'?PREFIX+code.toLowerCase():undefined,{secure:true,debug:0,config:{iceServers:[{urls:'stun:stun.cloudflare.com:3478'},{urls:'stun:stun.l.google.com:19302'}],sdpSemantics:'unified-plan'}});
-      ctx.peer.on('open',()=>{if(current!==ctx)return;ctx.connectionStatus=role==='host'?'房间已开，等好友加入':'正在找房间…';ctx.error='';if(role==='guest')connectGuest();render()});
+      ctx.peer.on('open',()=>{if(current!==ctx||ctx.closed)return;ctx.connectionStatus=role==='host'?'房间已开，等好友加入':'正在找房间…';ctx.error='';if(role==='guest')connectGuest();render()});
       ctx.peer.on('connection',conn=>{if(current!==ctx||role!=='host'){conn.close();return}bind(conn)});
-      ctx.peer.on('disconnected',()=>{if(current!==ctx)return;if(!ctx.connected){ctx.connectionStatus='连接断开，正在重连…';render()}setTimeout(()=>{if(current===ctx&&ctx.peer.disconnected&&!ctx.peer.destroyed){try{ctx.peer.reconnect()}catch{}}},2000)});
-      ctx.peer.on('error',error=>{if(current!==ctx)return;ctx.error=error.type==='peer-unavailable'?'房主可能正在分享邀请，回来后会自动连接，房间号不用换。':error.type==='unavailable-id'?'正在恢复原来的房间，稍等一下会自动重试。':'暂时没有连上。双方可以换个网络，再点重连。';ctx.connectionStatus='正在等重连…';render()});
+      ctx.peer.on('disconnected',()=>{if(current!==ctx||ctx.closed)return;if(!ctx.connected){ctx.connectionStatus='连接断开，正在重连…';render()}setTimeout(()=>{if(current===ctx&&!ctx.closed&&ctx.peer.disconnected&&!ctx.peer.destroyed){try{ctx.peer.reconnect()}catch{}}},2000)});
+      ctx.peer.on('error',error=>{if(current!==ctx||ctx.closed)return;ctx.error=error.type==='peer-unavailable'?'房主可能正在分享邀请，回来后会自动连接，房间号不用换。':error.type==='unavailable-id'?'正在恢复原来的房间，稍等一下会自动重试。':'暂时没有连上。双方可以换个网络，再点重连。';ctx.connectionStatus='正在等重连…';render()});
       ctx.timer=setInterval(()=>{if(current!==ctx||ctx.closed||document.hidden)return;if(ctx.peer?.destroyed){retry();return}if(ctx.peer?.disconnected){try{ctx.peer.reconnect()}catch{}}if(ctx.conn?.open){send({type:'ping'});if(ctx.lastSeen&&Date.now()-ctx.lastSeen>30000){ctx.connected=false;ctx.connectionStatus='对方暂时切走了，回来后自动接着玩';ctx.conn.close();render()}}else if(role==='guest'&&ctx.peer?.open&&!ctx.connecting)connectGuest()},4000);
-      ctx.timeout=setTimeout(()=>{if(current===ctx&&!ctx.connected&&(role==='guest'||!ctx.peer?.open)){ctx.error=role==='host'?'暂时没有连上联机服务，请检查网络或重试。':'还没收到房主回应。如果双方都在，可能是当前网络限制了直连，请换个网络重试。';render()}},22000);
+      ctx.timeout=setTimeout(()=>{if(current===ctx&&!ctx.closed&&!ctx.connected&&(role==='guest'||!ctx.peer?.open)){ctx.error=role==='host'?'暂时没有连上联机服务，请检查网络或重试。':'还没收到房主回应。如果双方都在，可能是当前网络限制了直连，请换个网络重试。';render()}},22000);
     }catch(error){if(current===ctx){ctx.error=error.message||'没能建立房间，请重试。';render()}}
   }
   function send(packet){const c=current;if(c?.conn?.open){try{c.conn.send({schema:1,room:c.room,...packet});return true}catch{}}return false}
@@ -53,7 +53,7 @@
   }
   async function receive(packet){const c=current;if(!c||c.closed)return;
     if(packet.type==='ping'){send({type:'pong'});return}if(packet.type==='pong'){if(!c.connected){c.connected=true;c.error='';render()}return}
-    if(packet.type==='reject'){c.closed=true;c.connected=false;c.connectionStatus=packet.code==='room-full'?'房间已满':'没有加入房间';c.error=String(packet.reason||'没有加入房间。');checkpoint();c.conn?.close();render();return}
+    if(packet.type==='reject'){c.closed=true;c.connected=false;c.connectionStatus=packet.code==='room-full'?'房间已满':'没有加入房间';c.error=String(packet.reason||'没有加入房间。');checkpoint();clearInterval(c.timer);clearTimeout(c.timeout);c.conn?.close();c.peer?.destroy();render();return}
     if(packet.type==='leave'){c.closed=true;c.connected=false;c.connectionStatus='房间已结束';c.error='对方离开了房间。想继续玩，可以重新开一间。';checkpoint();c.conn?.close();render();return}
     if(c.role==='host'){
       const h=c.host,s=h.s;
