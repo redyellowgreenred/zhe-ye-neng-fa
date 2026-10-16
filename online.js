@@ -9,7 +9,17 @@
   const hashRoom=()=>roomFrom(new URLSearchParams(location.hash.slice(1)).get('room')||'');
   const newCode=()=>Array.from(crypto.getRandomValues(new Uint8Array(12)),x=>ALPHABET[x%ALPHABET.length]).join('');
   function loadPeer(){if(window.Peer)return Promise.resolve();if(peerLoading)return peerLoading;peerLoading=new Promise((resolve,reject)=>{const script=document.createElement('script');script.src='peerjs.min.js';const fail=()=>{clearTimeout(timer);peerLoading=null;script.remove();reject(Error('联机组件没有加载好，请联网重试。'))};const timer=setTimeout(fail,12000);script.onload=()=>{clearTimeout(timer);window.Peer?resolve():fail()};script.onerror=fail;document.head.append(script)});return peerLoading}
-  function checkpoint(){if(!current)return;const value=JSON.stringify({role:current.role,room:current.room,name:current.name,token:current.token,fields:current.fields,version:current.version,snapshot:current.host?.s||null,state:current.state,secret:current.secret,closed:current.closed,savedAt:Date.now()});try{sessionStorage.setItem(KEY,value)}catch{}try{localStorage.setItem(KEY+':recovery',value)}catch{}}
+  function checkpoint(){if(!current)return;const deck=current.host?current.host.s.questions.map(id=>current.host.bank.get(id)):[...(current.deck?.values()||[])];const value=JSON.stringify({role:current.role,room:current.room,name:current.name,token:current.token,fields:current.fields,version:current.version,snapshot:current.host?.s||null,state:current.state,deck,secret:current.secret,closed:current.closed,savedAt:Date.now()});try{sessionStorage.setItem(KEY,value)}catch{}try{localStorage.setItem(KEY+':recovery',value)}catch{}}
+  function readDeck(rows,ids){
+    if(!Array.isArray(rows)||!Array.isArray(ids)||rows.length!==ids.length||rows.length>10)return null;
+    const result=new Map();
+    for(const q of rows){if(!q||typeof q.id!=='string'||q.id.length>200||result.has(q.id)||!ids.includes(q.id)||!FIELDS.includes(q.field)||!['top','regular'].includes(q.tier))return null;
+      if(!Array.isArray(q.summary)||q.summary.length!==3||!q.summary.every(s=>typeof s==='string'&&s.length>0&&s.length<=1200)||!Array.isArray(q.methods)||q.methods.length>12||!q.methods.every(s=>typeof s==='string'&&s.length<=120))return null;
+      if(typeof q.title!=='string'||!q.title||q.title.length>1500||typeof q.venue!=='string'||q.venue.length>300||!Number.isInteger(q.year)||typeof q.url!=='string'||q.url.length>2000||!/^https?:\/\//.test(q.url))return null;
+      result.set(q.id,{id:q.id,field:q.field,tier:q.tier,title:q.title,venue:q.venue,year:q.year,url:q.url,doi:typeof q.doi==='string'?q.doi:'',summary:[...q.summary],methods:[...q.methods]});
+    }return result;
+  }
+  const roomPaper=id=>current?.host?.bank.get(id)||current?.deck?.get(id)||BANK.find(q=>q.id===id);
   window.onlineSetup=function(){const s=saved();return `<div class="online-setup"><label class="label" for="online-name">你的昵称</label><input class="online-input" id="online-name" maxlength="12" placeholder="比如：论文侦探" value="${esc(store.get('online-name',''))}"><div class="join-row"><label class="sr-only" for="online-code">房间号或邀请链接</label><input class="online-input" id="online-code" autocomplete="off" placeholder="房间号或好友的邀请链接" value="${esc(hashRoom())}"><button class="soft" data-online="join">加入房间</button></div>${s&&!s.closed?'<button class="link" data-online="resume">回到上次的房间 →</button>':''}<p class="mode-note">想当房主？选好下方领域，再点创建房间。</p></div>`};
   function persistName(name){store.set('online-name',name)}
   async function enter(role,code,resume){
@@ -23,11 +33,12 @@
     try{
       ctx.version=await Core.digest(JSON.stringify(BANK.map(q=>[q.id,q.tier,q.summary])));
       if(current!==ctx)return;
-      if(resume?.version&&resume.version!==ctx.version)throw Error('题库更新了，请重新创建房间。');
       if(role==='host'){
-        ctx.host=new Core.Room({room:code,name,fields:ctx.fields,version:ctx.version,bank:BANK,snapshot:resume?.snapshot});ctx.state=ctx.host.publicState();
+        const snapshot=resume?.snapshot,deck=readDeck(resume?.deck,snapshot?.questions||[]);if(snapshot)snapshot.version=ctx.version;
+        const roomBank=new Map(BANK.map(q=>[q.id,q]));if(deck)for(const [id,q]of deck)roomBank.set(id,q);
+        ctx.host=new Core.Room({room:code,name,fields:ctx.fields,version:ctx.version,bank:[...roomBank.values()],snapshot});ctx.state=ctx.host.publicState();
         ctx.host.onChange=s=>{if(current!==ctx)return;const moved=ctx.state?.round!==s.round||ctx.state?.index!==s.index;ctx.state=s;if(moved){ctx.draft=null;if(ctx.secret&&(ctx.secret.round!==s.round||ctx.secret.index!==s.index))ctx.secret=null}checkpoint();send({type:'state',state:s});releaseIfNeeded();render()};
-      }
+      }else ctx.deck=readDeck(resume?.deck,resume?.state?.questions||[]);
       checkpoint();await loadPeer();if(current!==ctx)return;
       ctx.peer=new Peer(role==='host'?PREFIX+code.toLowerCase():undefined,{secure:true,debug:0,config:{iceServers:[{urls:'stun:stun.cloudflare.com:3478'},{urls:'stun:stun.l.google.com:19302'}],sdpSemantics:'unified-plan'}});
       ctx.peer.on('open',()=>{if(current!==ctx||ctx.closed)return;ctx.connectionStatus=role==='host'?'房间已开，等好友加入':'正在找房间…';ctx.error='';if(role==='guest')connectGuest();render()});
@@ -38,13 +49,13 @@
       ctx.timeout=setTimeout(()=>{if(current===ctx&&!ctx.closed&&!ctx.connected&&(role==='guest'||!ctx.peer?.open)){ctx.error=role==='host'?'暂时没有连上联机服务，请检查网络或重试。':'还没收到房主回应。如果双方都在，可能是当前网络限制了直连，请换个网络重试。';render()}},22000);
     }catch(error){if(current===ctx){ctx.error=error.message||'没能建立房间，请重试。';render()}}
   }
-  function send(packet){const c=current;if(c?.conn?.open){try{c.conn.send({schema:1,room:c.room,...packet});return true}catch{}}return false}
+  function send(packet){const c=current;if(c?.conn?.open){try{if(packet.type==='state'&&c.host)packet={...packet,deck:packet.state.questions.map(id=>c.host.bank.get(id))};c.conn.send({schema:1,protocol:2,room:c.room,...packet});return true}catch{}}return false}
   function connectGuest(){const c=current;if(!c||c.role!=='guest'||c.closed||!c.peer?.open||c.conn?.open||c.connecting)return;c.connecting=true;c.connectionStatus='正在连接房主…';const conn=c.peer.connect(PREFIX+c.room.toLowerCase(),{reliable:true,serialization:'json'});bind(conn);setTimeout(()=>{if(current===c&&c.connecting&&!c.connected){c.connecting=false;conn.close();render()}},12000)}
   function bind(conn){const c=current;if(!c)return;let accepted=false;
     if(c.role==='guest')c.conn=conn;
     conn.on('open',()=>{if(current!==c){conn.close();return}c.lastSeen=Date.now();if(c.role==='guest'){c.connecting=false;c.conn=conn;send({type:'hello',name:c.name,token:c.token,version:c.version})}});
     conn.on('data',packet=>{if(current!==c||!packet||packet.schema!==1||packet.room!==c.room||JSON.stringify(packet).length>65536)return;
-      if(c.role==='host'&&!accepted){if(packet.type!=='hello')return;const occupied=c.host.s.guestToken&&c.host.s.guestToken!==packet.token;if(occupied||!c.host.join(packet.token,packet.name,packet.version)){const full=!!occupied;conn.send({schema:1,room:c.room,type:'reject',code:full?'room-full':'version-mismatch',reason:full?'房间已满，这里已经有两位玩家啦。请换个房间，或让好友重新创建。':'两人的题库版本不同，请双方刷新网页后重开。'});setTimeout(()=>conn.close(),500);return}const previous=c.conn;accepted=true;c.conn=conn;if(previous&&previous!==conn)previous.close();c.connected=true;c.lastSeen=Date.now();c.error='';c.connectionStatus='好友已连接';send({type:'state',state:c.host.publicState()});render();return}
+      if(c.role==='host'&&!accepted){if(packet.type!=='hello')return;const occupied=c.host.s.guestToken&&c.host.s.guestToken!==packet.token;if(occupied||!c.host.join(packet.token,packet.name,packet.protocol===2?c.host.s.version:packet.version)){const full=!!occupied;conn.send({schema:1,room:c.room,type:'reject',code:full?'room-full':'version-mismatch',reason:full?'房间已满，这里已经有两位玩家啦。请换个房间，或让好友重新创建。':'旧版联机程序需要更新，请双方刷新一次网页后重新建房。'});setTimeout(()=>conn.close(),500);return}const previous=c.conn;accepted=true;c.conn=conn;if(previous&&previous!==conn)previous.close();c.connected=true;c.lastSeen=Date.now();c.error='';c.connectionStatus='好友已连接';send({type:'state',state:c.host.publicState()});render();return}
       if(c.role==='host'&&conn!==c.conn)return;c.lastSeen=Date.now();
       c.messageChain=c.messageChain.then(()=>receive(packet)).catch(()=>{if(current===c){c.error='刚才的消息没有处理好，正在重新同步。';send({type:'sync'});render()}});
     });
@@ -60,22 +71,22 @@
       switch(packet.type){case'commit':h.commit(1,packet.round,packet.index,packet.hash);break;case'request-reveal':h.requestReveal(packet.round,packet.index);break;case'reveal':await h.reveal(1,packet.round,packet.index,packet.vote,packet.salt);break;case'next':h.advance(1,packet.round,packet.index);break;case'rematch':h.rematch(1,pickQuestions(s.fields));break;case'sync':break;default:return}
       send({type:'state',state:h.publicState()});
     }else if(packet.type==='state'){
-      const s=packet.state;if(!validState(s,c))return;if(c.state&&s.revision<c.state.revision)return;
+      const s=packet.state,deck=packet.protocol===2?readDeck(packet.deck,s?.questions):s?.version===c.version?new Map(BANK.map(q=>[q.id,q])):null;if(!deck||!validState(s,c,deck))return;if(c.state&&s.revision<c.state.revision)return;c.deck=deck;
       const changed=c.state?.round!==s.round||c.state?.index!==s.index;c.state=s;c.connected=true;c.error='';c.connectionStatus='已连接房主';
       if(changed){c.draft=null;if(c.secret&&(c.secret.round!==s.round||c.secret.index!==s.index))c.secret=null}
       checkpoint();if(c.secret&&s.commits[1]===null&&s.phase==='choose')send({type:'commit',round:s.round,index:s.index,hash:c.secret.hash});releaseIfNeeded();render();
     }
   }
-  function validState(s,c){
-    if(!s||s.schema!==1||s.room!==c.room||s.version!==c.version||!Number.isInteger(s.revision)||s.revision<0)return false;
+  function validState(s,c,deck){
+    if(!s||s.schema!==1||s.room!==c.room||typeof s.version!=='string'||!Number.isInteger(s.revision)||s.revision<0)return false;
     if(!Array.isArray(s.names)||s.names.length!==2||!s.names.every(n=>typeof n==='string'&&n.length<=12)||!Array.isArray(s.fields)||!s.fields.length||!s.fields.every(f=>FIELDS.includes(f)))return false;
-    if(!Array.isArray(s.questions)||s.questions.length>10||new Set(s.questions).size!==s.questions.length||!s.questions.every(id=>BANK.some(q=>q.id===id)))return false;
+    if(!Array.isArray(s.questions)||s.questions.length>10||new Set(s.questions).size!==s.questions.length||!s.questions.every(id=>deck.has(id)))return false;
     if(!['lobby','choose','ready','revealing','reveal','finished','closed'].includes(s.phase)||!Number.isInteger(s.index)||s.index<0||s.index>10)return false;
     if(!['lobby','closed'].includes(s.phase)&&s.questions.length!==10||s.phase==='finished'&&s.index!==10||!['finished','closed'].includes(s.phase)&&s.index===10)return false;
     if(!Array.isArray(s.commits)||s.commits.length!==2||!s.commits.every(h=>h===null||typeof h==='string'&&/^[a-f0-9]{64}$/.test(h)))return false;
     if(!Array.isArray(s.next)||s.next.length!==2||!s.next.every(n=>typeof n==='boolean')||!Array.isArray(s.history)||s.history.length>10)return false;
     if(!Array.isArray(s.points)||s.points.length!==2||!s.points.every(p=>Number.isInteger(p)&&p>=0&&p<=100))return false;
-    const points=[0,0];for(let i=0;i<s.history.length;i++){const item=s.history[i];if(!item||item.id!==s.questions[i]||!Array.isArray(item.votes)||item.votes.length!==2||!item.votes.every(v=>['top','regular'].includes(v)))return false;const q=BANK.find(q=>q.id===item.id);item.votes.forEach((vote,p)=>{if(vote===q.tier)points[p]+=10})}
+    const points=[0,0];for(let i=0;i<s.history.length;i++){const item=s.history[i];if(!item||item.id!==s.questions[i]||!Array.isArray(item.votes)||item.votes.length!==2||!item.votes.every(v=>['top','regular'].includes(v)))return false;const q=deck.get(item.id);item.votes.forEach((vote,p)=>{if(vote===q.tier)points[p]+=10})}
     if(points.some((n,p)=>n!==s.points[p]))return false;
     return s.phase==='closed'||s.history.length===(s.phase==='reveal'?s.index+1:s.index);
   }
@@ -89,9 +100,9 @@
       body=`<section class="qcard"><div class="qhead"><span class="tag">好友联机</span><span>每局 10 题</span></div><div class="qbody"><h2>${c.role==='host'?'房间开好了，叫上好友':'来，和好友猜一局'}</h2><p>${c.role==='host'?'点「分享给好友」发送邀请。切去发消息也没关系，回来后会自动恢复原房间。':'等房主准备好，就可以一起开猜。'}</p><div class="room-code">${esc(c.room.slice(0,4))} ${esc(c.room.slice(4,8))} ${esc(c.room.slice(8))}</div><div class="online-actions"><button class="primary" data-online="share">分享给好友 ↗</button><button class="soft" data-online="copy-link">复制邀请链接 ↗</button><button class="soft" data-online="copy-code">复制房间号</button></div><div class="room-players"><div>🍓 ${esc(s?.names[0]|| (c.role==='host'?c.name:'房主'))}<span>房主</span></div><div>🍋 ${esc(c.connected?(s?.names[1]||'好友'):'等好友加入')}<span>${c.connected?'已就位':'还没到'}</span></div></div>${s?`<div class="methods">${s.fields.map(f=>`<span>${esc(f)}</span>`).join('')}</div>`:''}${c.role==='host'?`<button class="primary confirm" data-online="start" ${!c.connected?'disabled':''}>一起开始，猜 10 题 ↗</button>`:'<p class="turn">等房主开始，不用抢答。</p>'}</div></section>`;
     }else if(s.phase==='finished'){
       const title=s.points[0]===s.points[1]?'平局！下局再比。':`${esc(s.names[s.points[0]>s.points[1]?0:1])} 赢啦！`;
-      body=`<div class="result-title"><div class="emoji">✌️</div><h2>${title}</h2><p>这一局，十题都猜完了。</p></div><div class="scorecards">${s.names.map((name,i)=>`<div class="scorecard"><p>${esc(name)}${i===p?'（你）':''}</p><strong>${s.points[i]}</strong><p>猜对 ${s.points[i]/10} 题</p></div>`).join('')}</div><div class="result-actions"><button class="primary" data-online="rematch" ${s.next[p]||!c.connected?'disabled':''}>${s.next[p]?'等好友也准备好':'再比一局 ↗'}</button><button class="soft" data-online="leave-prompt">回首页</button></div><h3 class="section-title">这局都猜了什么</h3><div class="review-list">${s.history.map((item,i)=>{const q=BANK.find(q=>q.id===item.id);return `<details class="review-item"><summary><span class="rmark ${item.votes[p]!==q.tier?'bad':''}">${item.votes[p]===q.tier?'✓':'×'}</span><span class="rfield">${i+1} · ${esc(q.field)}</span><span>${tierLabel(q.tier)} ＋</span></summary><div class="rbody"><p>${q.summary.map(esc).join('')}</p><p>${esc(q.title)}</p><p>${esc(q.venue)} · ${q.year}</p><p>${s.names.map((name,j)=>`${esc(name)}：${tierLabel(item.votes[j])} ${item.votes[j]===q.tier?'✓':'×'}`).join('　')}</p><a href="${esc(safeUrl(q.url))}" target="_blank" rel="noopener noreferrer">查看论文与摘要 ↗</a></div></details>`}).join('')}</div>`;
+      body=`<div class="result-title"><div class="emoji">✌️</div><h2>${title}</h2><p>这一局，十题都猜完了。</p></div><div class="scorecards">${s.names.map((name,i)=>`<div class="scorecard"><p>${esc(name)}${i===p?'（你）':''}</p><strong>${s.points[i]}</strong><p>猜对 ${s.points[i]/10} 题</p></div>`).join('')}</div><div class="result-actions"><button class="primary" data-online="rematch" ${s.next[p]||!c.connected?'disabled':''}>${s.next[p]?'等好友也准备好':'再比一局 ↗'}</button><button class="soft" data-online="leave-prompt">回首页</button></div><h3 class="section-title">这局都猜了什么</h3><div class="review-list">${s.history.map((item,i)=>{const q=roomPaper(item.id);return `<details class="review-item"><summary><span class="rmark ${item.votes[p]!==q.tier?'bad':''}">${item.votes[p]===q.tier?'✓':'×'}</span><span class="rfield">${i+1} · ${esc(q.field)}</span><span>${tierLabel(q.tier)} ＋</span></summary><div class="rbody"><p>${q.summary.map(esc).join('')}</p><p>${esc(q.title)}</p><p>${esc(q.venue)} · ${q.year}</p><p>${s.names.map((name,j)=>`${esc(name)}：${tierLabel(item.votes[j])} ${item.votes[j]===q.tier?'✓':'×'}`).join('　')}</p><a href="${esc(safeUrl(q.url))}" target="_blank" rel="noopener noreferrer">查看论文与摘要 ↗</a></div></details>`}).join('')}</div>`;
     }else{
-      const q=BANK.find(q=>q.id===s.questions[s.index]);if(!q)return;
+      const q=roomPaper(s.questions[s.index]);if(!q)return;
       body=`<div class="online-scores">${s.names.map((name,i)=>`<span>${esc(name)}${i===p?'（你）':''} <strong>${s.points[i]}</strong> 分</span>`).join('')}</div><div class="progress"><i style="width:${(s.index+1)*10}%"></i></div><article class="qcard"><div class="qhead"><span class="tag">${esc(q.field)}</span><span>第 ${String(s.index+1).padStart(2,'0')} / 10 题</span></div><div class="qbody"><h2>你觉得，这篇发在哪？</h2><div class="summary">${q.summary.map((sentence,i)=>`<div class="sentence"><span>0${i+1}</span><p>${esc(sentence)}</p></div>`).join('')}</div><div class="methods">${q.methods.map(method=>`<span>${esc(method)}</span>`).join('')}</div></div></article>`;
       if(s.phase==='reveal'){
         const item=s.history[s.index];body+=`<section class="reveal"><h3>答案来了！${tierLabel(q.tier)}</h3><div class="vote-result">${s.names.map((name,i)=>`<span>${esc(name)}：${item.votes[i]===q.tier?'猜中 +10':'没猜中 +0'}</span>`).join('')}</div><p class="paper-title">${esc(q.title)}</p><p class="venue">${esc(q.venue)} · ${q.year}</p><a class="source" href="${esc(safeUrl(q.url))}" target="_blank" rel="noopener noreferrer">查看论文与摘要 ↗</a></section><button class="primary confirm" data-online="next" ${s.next[p]||!c.connected?'disabled':''}>${s.next[p]?'等好友看完答案':s.index===9?'看看这一局的成绩':'准备好了，下一题 →'}</button>`;
