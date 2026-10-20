@@ -7,7 +7,8 @@
     const byId=new Map(bank.map(q=>[q.id,q])),valid=id=>typeof id==='string'&&byId.has(id);
     const unique=xs=>[...new Set(Array.isArray(xs)?xs.filter(valid):[])];
     const integer=n=>Number.isInteger(n)&&n>=0&&n<4;
-    const state={schema:1,field:FIELDS.includes(raw.field)?raw.field:'',seen:unique(raw.seen),saved:unique(raw.saved),history:[],current:null,timer:null};
+    const state={schema:1,field:FIELDS.includes(raw.field)?raw.field:'',seen:unique(raw.seen),saved:unique(raw.saved),history:[],paperVotes:{},current:null,timer:null};
+    if(raw.paperVotes&&typeof raw.paperVotes==='object')for(const [id,vote]of Object.entries(raw.paperVotes))if(valid(id)&&['top','regular'].includes(vote))state.paperVotes[id]=vote;
     if(Array.isArray(raw.history))state.history=raw.history.filter(h=>h&&valid(h.id)&&integer(h.choice)&&Number.isFinite(h.at)).slice(-1000).map(h=>({id:h.id,choice:h.choice,at:h.at}));
     const c=raw.current;
     if(c&&valid(c.id)&&(!state.field||byId.get(c.id).field===state.field)&&Array.isArray(c.order)&&c.order.length===4&&new Set(c.order).size===4&&c.order.every(integer))state.current={id:c.id,order:[...c.order],draft:integer(c.draft)?c.draft:null,choice:integer(c.choice)?c.choice:null};
@@ -28,6 +29,10 @@
       const c=state.current,q=current();if(!q||c.draft===null||c.choice!==null)return null;
       c.choice=c.draft;state.history.push({id:q.id,choice:c.choice,at:now});state.history=state.history.slice(-1000);return c.choice===q.answer;
     }
+    function guessPaper(vote){
+      const q=current();if(!q||state.current.choice===null||!['top','regular'].includes(vote)||state.paperVotes[q.id]||!['top','regular'].includes(q.paper?.tier))return null;
+      state.paperVotes[q.id]=vote;return vote===q.paper.tier;
+    }
     function setField(field){if(field!==''&&!FIELDS.includes(field))return false;state.field=field;next();return true}
     function bookmark(id=state.current?.id){if(!valid(id))return false;const i=state.saved.indexOf(id);if(i>=0)state.saved.splice(i,1);else state.saved.unshift(id);return i<0}
     function revisit(id){if(!valid(id))return false;state.field='';const prior=[...state.history].reverse().find(h=>h.id===id);state.current={id,order:shuffle([0,1,2,3],random),draft:prior?.choice??null,choice:prior?.choice??null};return true}
@@ -45,7 +50,7 @@
     function resumeTimer(now=Date.now()){const t=state.timer;if(!t||t.done||t.remaining<=0)return false;t.deadline=now+t.remaining*1000;return true}
     const snapshot=()=>JSON.parse(JSON.stringify(state));
     if(!state.current)next();
-    return {state,byId,current,next,draft,answer,setField,bookmark,revisit,today,startTimer,timerRemaining,pauseTimer,resumeTimer,snapshot};
+    return {state,byId,current,next,draft,answer,guessPaper,setField,bookmark,revisit,today,startTimer,timerRemaining,pauseTimer,resumeTimer,snapshot};
   }
   const api={FIELDS,shuffle,create};if(typeof module!=='undefined'&&module.exports)module.exports=api;root.WarmupCore=api;
 })(typeof window!=='undefined'?window:globalThis);
