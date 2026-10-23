@@ -3711,5 +3711,41 @@
     "reviewed": true,
     "primaryDimension": "巧思",
     "secondaryDimension": "抽象"
+  },
+  {
+    "primaryDimension": "巧思",
+    "dimensions": [
+      "巧思",
+      "自嘲"
+    ],
+    "width": 1080,
+    "source": "3975 一周梗图",
+    "src": "assets/reviewed/0206.webp",
+    "sourceUrl": "https://chd.7long.com/news/newsdetail?id=S+UG34vx8xHdpKHjHg",
+    "reviewed": true,
+    "title": "找工作要喜欢，但最好也轻松",
+    "sourceMedia": "https://tradingimage.3975.com/forum/Uploads/Picture/2024-03-11/171012468844015.jpg",
+    "height": 1080,
+    "secondaryDimension": "自嘲",
+    "reviewNote": "两格采访先说找工作不一定要轻松，但要找自己喜欢的；被问喜欢什么时，答案是“轻松的”。前后绕一圈把真实愿望说漏了，猫咪的采访画面和对话是完整笑点，画面清楚且不依赖特定圈子；它是对话反转，不是猫的反应表情。",
+    "id": 206
+  },
+  {
+    "sourceUrl": "https://gengtu.net/memes/17-squares-packing-optimal-solution-meme/",
+    "source": "梗图网（转引微博/X）",
+    "sourceMedia": "https://gengtu.net/i/download/memes/9d/fe/07/11/9dfe0711f79ab57642133d06f15afb91.png",
+    "title": "17 个正方形的最优解",
+    "secondaryDimension": "抽象",
+    "primaryDimension": "巧思",
+    "height": 1200,
+    "id": 207,
+    "reviewed": true,
+    "src": "assets/reviewed/0207.png",
+    "width": 367,
+    "reviewNote": "图先给出17个正方形塞进大正方形的已知最优排法，再配上“数学是优雅的”和“正常人会打包16或25个”的吐槽。梗在数学最优解的别扭外形和日常直觉不合拍。中文译文完整，文字能看清；需要知道“最优解”概念，但不依赖特定圈子。窄长截图里几何图和两段评论都要保留，和现有影视反转图的表达方式不同。",
+    "dimensions": [
+      "巧思",
+      "抽象"
+    ]
   }
 ]
