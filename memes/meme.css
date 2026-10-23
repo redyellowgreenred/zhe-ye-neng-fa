@@ -20,7 +20,7 @@ body:has(.meme-shell){background:#f7f3e8;color:#171746}
 .report-art-zoom>span{position:absolute;right:10px;bottom:10px;display:grid;place-items:center;width:38px;height:38px;border-radius:50%;background:#ff5a24;color:#171746;font-size:25px;line-height:1;box-shadow:0 2px 8px #17174633}
 .chart-wrap{min-width:0;padding:6px 0;text-align:center}
 .radar{max-width:none;max-height:none}
-.result-joke{margin:4px auto 10px;max-width:410px;color:#171746;font-size:17px;font-weight:600}
+
 .meme-shell .legend i{border-color:#2724cc}.meme-shell .legend b{border-color:#ff5a24}
 .result-line{display:inline-block;padding:4px 12px;border-radius:20px;background:#ffd43b;color:#171746;font-weight:700}
 .meme-shell .share-qr img{border:1px solid #171746}
@@ -50,5 +50,24 @@ body.zoom-open{overflow:hidden}
 .meme-shell .result-link{display:flex;gap:8px}
 .meme-shell .result-link input{flex:1;min-width:0;border:1px solid #d6d0c3;border-radius:10px;padding:8px}
 @keyframes zoom-fade{from{opacity:0}to{opacity:1}}
-@media(max-width:700px){.meme-shell .report-card{grid-template-columns:1fr;padding:14px;gap:6px}.meme-shell .report-art-zoom .report-art{height:min(54vh,360px)}.meme-shell .radar{max-width:380px;max-height:none}.meme-shell .report-heading h2{font-size:23px}.meme-shell .result-joke{font-size:16px}.meme-shell .meme-choice{aspect-ratio:.92}.meme-shell .zoom-button{right:7px;bottom:7px;width:34px;height:34px}.meme-shell .report-actions>*{flex:1 1 140px}.meme-zoom{padding:8vh 3vw}.meme-zoom img{max-width:94vw;max-height:82vh}}
+@media(max-width:700px){.meme-shell .report-card{grid-template-columns:1fr;padding:14px;gap:6px}.meme-shell .report-art-zoom .report-art{height:min(54vh,360px)}.meme-shell .radar{max-width:380px;max-height:none}.meme-shell .report-heading h2{font-size:23px}.meme-shell .meme-choice{aspect-ratio:.92}.meme-shell .zoom-button{right:7px;bottom:7px;width:34px;height:34px}.meme-shell .report-actions>*{flex:1 1 140px}.meme-zoom{padding:8vh 3vw}.meme-zoom img{max-width:94vw;max-height:82vh}}
 @media(prefers-reduced-motion:reduce){.meme-zoom.is-open{animation:none}}
+
+/* Pick feedback and compact progress. */
+.meme-shell .meme-nav{height:auto;min-height:42px;padding:8px 0}
+.meme-shell .meme-progress{display:flex;width:min(100%,520px);align-items:center;gap:12px;margin:0 auto}
+.meme-shell .meme-progress .meme-count{flex:0 0 68px;margin:0;text-align:left;white-space:nowrap;font-variant-numeric:tabular-nums;font-weight:700}
+.meme-shell .meme-track{height:7px;flex:1;overflow:hidden;border:1px solid #171746;border-radius:10px;background:#fff}
+.meme-shell .meme-track i{display:block;height:100%;border-radius:inherit;background:#ff5a24;transition:width .38s cubic-bezier(.2,.8,.2,1)}
+.meme-shell .pick-burst{position:absolute;inset:0;z-index:4;display:grid;place-items:center;pointer-events:none}
+.meme-shell .pick-burst b{display:grid;width:64px;height:64px;place-items:center;border:2px solid #171746;border-radius:50%;background:#ffd43b;color:#171746;font-size:31px;box-shadow:0 5px 0 #ff5a24;animation:pick-check .46s cubic-bezier(.2,.8,.2,1) both}
+.meme-shell .pick-burst i{position:absolute;color:#ff5a24;font-style:normal;font-size:22px;animation:pick-spark .52s ease-out both}
+.meme-shell .pick-burst i:nth-child(1){transform:translate(-54px,-34px)}
+.meme-shell .pick-burst i:nth-child(2){transform:translate(56px,-22px);color:#2724cc;animation-delay:.04s}
+.meme-shell .pick-burst i:nth-child(3){transform:translate(0,54px);color:#2724cc;animation-delay:.08s}
+.meme-shell .score-flash-row.has-deduction small{margin-left:4px;padding:1px 4px;border-radius:5px;background:#ff5a241a;color:#d5481d;font-size:10px;font-weight:700}
+.meme-shell .score-flash-row.has-deduction b{color:#d5481d}
+.meme-shell .score-flash-grid>small{color:#171746;font-weight:700}
+@keyframes pick-check{0%{opacity:0;transform:scale(.4) rotate(-15deg)}55%{opacity:1;transform:scale(1.12) rotate(4deg)}100%{opacity:1;transform:scale(1) rotate(0)}}
+@keyframes pick-spark{0%{opacity:0;scale:.4}35%{opacity:1}100%{opacity:0;scale:1.55}}
+@media(prefers-reduced-motion:reduce){.meme-shell .pick-burst *,.meme-shell .meme-track i{animation:none;transition:none}}
