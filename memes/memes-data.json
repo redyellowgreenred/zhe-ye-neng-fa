@@ -4506,5 +4506,95 @@
     "primaryDimension": "巧思",
     "secondaryDimension": "犀利",
     "reviewNote": "车牌旁被人写上“219×2=438”，车主告示说再不承认就报警；评论接着说“报警也没用，他算的对”。恶作剧突然变成认真做数学题，照片里的字放大后清楚。"
+  },
+  {
+    "id": 252,
+    "src": "assets/reviewed/0252.webp",
+    "title": "疲惫程度从十级往下数",
+    "dimensions": [
+      "自嘲",
+      "犀利"
+    ],
+    "source": "@nerdgasrnz（图上署名）/ 3975 一周梗图",
+    "sourceUrl": "https://chd.7long.com/news/newsdetail?id=SbNR0Nz9+UPdpKThHg",
+    "sourceMedia": "https://tradingimage.3975.com/forum/Uploads/Picture/2024-04-08/171254278084771.jpg",
+    "width": 672,
+    "height": 464,
+    "reviewed": true,
+    "primaryDimension": "自嘲",
+    "secondaryDimension": "犀利",
+    "reviewNote": "疲惫自测表从“几乎不能动、也没力气说话”一路降到“还能出去海”。把状态差排成游戏等级，越往下越像在给自己找台阶；字都清楚。"
+  },
+  {
+    "id": 253,
+    "src": "assets/reviewed/0253.webp",
+    "title": "临终消息先被纠正了用词",
+    "dimensions": [
+      "地狱",
+      "巧思"
+    ],
+    "source": "3975 一周梗图",
+    "sourceUrl": "https://chd.7long.com/news/newsdetail?id=GrgCj9D3+xbdpKXkGQ",
+    "sourceMedia": "https://tradingimage.3975.com/forum/Uploads/Picture/2024-04-01/171194037578033.jpg",
+    "width": 1080,
+    "height": 1327,
+    "reviewed": true,
+    "primaryDimension": "地狱",
+    "secondaryDimension": "巧思",
+    "reviewNote": "聊天里有人说自己可能快死了，让朋友到时候替他发“卜告”；朋友只回“讣告”，还认真标了拼音。危急时刻被抓错别字，黑色幽默落在朋友的冷静上。"
+  },
+  {
+    "id": 254,
+    "src": "assets/reviewed/0254.webp",
+    "title": "鸡说不如直接杀了",
+    "dimensions": [
+      "地狱",
+      "抽象"
+    ],
+    "source": "3975 一周梗图",
+    "sourceUrl": "https://chd.7long.com/news/newsdetail?id=TuQC3N2k/xfdp6rgFg",
+    "sourceMedia": "https://tradingimage.3975.com/forum/Uploads/Picture/2024-02-26/170891407160184.jpg",
+    "width": 1240,
+    "height": 1453,
+    "reviewed": true,
+    "primaryDimension": "地狱",
+    "secondaryDimension": "抽象",
+    "reviewNote": "一车鸡挤在车窗外，配字替鸡说“还不如把我杀了来的干脆点”。运输现场被写成鸡的第一人称抱怨，黑色吐槽与挤成一团的画面对应。"
+  },
+  {
+    "id": 255,
+    "src": "assets/reviewed/0255.webp",
+    "title": "现做狗屎糖，还不含糖",
+    "dimensions": [
+      "巧思",
+      "抽象"
+    ],
+    "source": "@Lucky_Ayu（图上署名）/ 3975 一周梗图",
+    "sourceUrl": "https://chd.7long.com/news/newsdetail?id=SrcD3oqj/kDdpqHhGg",
+    "sourceMedia": "https://tradingimage.3975.com/forum/Uploads/Picture/2023-12-08/170201196280199.jpg",
+    "width": 970,
+    "height": 928,
+    "reviewed": true,
+    "primaryDimension": "巧思",
+    "secondaryDimension": "抽象",
+    "reviewNote": "招牌写着“现做狗屎糖（不含糖）”，把听起来就不想吃的名字和一本正经的商品说明放在一起。路边实拍的反差就是笑点，不依赖帖子标题。"
+  },
+  {
+    "id": 256,
+    "src": "assets/reviewed/0256.webp",
+    "title": "大学评分里最诚实的是评论",
+    "dimensions": [
+      "犀利",
+      "自嘲"
+    ],
+    "source": "@沙雕文案（图上署名）/ 3975 一周梗图",
+    "sourceUrl": "https://chd.7long.com/news/newsdetail?id=GORTiov2/EfdpqLmHg",
+    "sourceMedia": "https://tradingimage.3975.com/forum/Uploads/Picture/2023-12-01/170139524376604.jpg",
+    "width": 1280,
+    "height": 967,
+    "reviewed": true,
+    "primaryDimension": "犀利",
+    "secondaryDimension": "自嘲",
+    "reviewNote": "学校评分卡里，分数看着还行，评论却只剩“史”、想要回以前的食堂等大实话。星级和学生留言的温差，顺手把学校生活吐槽完了。"
   }
 ]
