@@ -3867,5 +3867,50 @@
     "primaryDimension": "巧思",
     "secondaryDimension": "犀利",
     "reviewNote": "把阿基米德“给我一个支点，我能撬动地球”的名句接到金融人递来的三倍杠杆上，第二天开盘，阿基米德就净亏两个地球。古典物理的杠杆和金融杠杆在一句话里撞上，最后用亏损把豪言反转；整段因果完整、手机上可读，既需要知道名句，也不依赖帖子标题。"
+  },
+  {
+    "id": 216,
+    "src": "assets/reviewed/0216.jpeg",
+    "title": "为什么没有弟弟？",
+    "dimensions": ["巧思", "自嘲"],
+    "source": "LINUX DO 摸鱼周刊 Vol.004",
+    "sourceUrl": "https://linux.do/t/topic/1053194",
+    "sourceMedia": "https://cdn3.ldstatic.com/original/4X/6/f/0/6f0f7dce3fc761c6fef9218846a9db7dbfbf383b.jpeg",
+    "width": 600,
+    "height": 613,
+    "reviewed": true,
+    "reviewNote": "父亲和儿子躺在一起，孩子问为什么没有弟弟，父亲回答“因为你晚上不睡觉”。画面里的亲子闲聊把“照顾孩子太累，没空再生一个”的家长吐槽藏进了看似认真的回答里，靠双关式误读落笑点。原图文字和画面完整，无需帖子标题。",
+    "primaryDimension": "巧思",
+    "secondaryDimension": "自嘲"
+  },
+  {
+    "id": 217,
+    "src": "assets/reviewed/0217.jpeg",
+    "title": "房贷比动画反派还难还",
+    "dimensions": ["自嘲", "犀利"],
+    "source": "LINUX DO 摸鱼周刊 Vol.004",
+    "sourceUrl": "https://linux.do/t/topic/1053194",
+    "sourceMedia": "https://cdn3.ldstatic.com/original/4X/d/2/6/d269656906caaae5878083c86e1c97c3f48667ed.jpeg",
+    "width": 1170,
+    "height": 1230,
+    "reviewed": true,
+    "reviewNote": "发帖人算出动画反派每月拿一半工资还债，仍要十六年多；再看自己每月近八成工资还房贷，要还三十年，于是分不清谁更走投无路。笑点来自把虚构角色的荒唐债务拿来对照现实房贷，末尾的自我比较把吐槽落回自己身上。文字截图完整清楚，不依赖标题。",
+    "primaryDimension": "自嘲",
+    "secondaryDimension": "犀利"
+  },
+  {
+    "id": 218,
+    "src": "assets/reviewed/0218.jpeg",
+    "title": "猫也能太阳能充电",
+    "dimensions": ["巧思", "暖心"],
+    "source": "LINUX DO 摸鱼周刊 Vol.004",
+    "sourceUrl": "https://linux.do/t/topic/1053194",
+    "sourceMedia": "https://cdn3.ldstatic.com/original/4X/1/2/d/12d756eb5075f059e6d6fbd34393bccc5b95e473.jpeg",
+    "width": 553,
+    "height": 543,
+    "reviewed": true,
+    "reviewNote": "一只猫趴在阳光里，窗格的光影恰好像一排电量格，配文“他完全充满电了”把晒太阳说成给猫充电。文字把光影构图变成视觉双关，画面本身就能读懂，也带着轻松的可爱感。",
+    "primaryDimension": "巧思",
+    "secondaryDimension": "暖心"
   }
 ]
