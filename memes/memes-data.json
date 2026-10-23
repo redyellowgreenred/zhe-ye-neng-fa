@@ -4056,5 +4056,41 @@
     "primaryDimension": "暖心",
     "secondaryDimension": "巧思",
     "reviewNote": "图上先交代伴侣打扫、做饭、放好最喜欢的节目，让刚到家的人休息；下一格是 Joker 说“你活该得到这些”。把反派威胁式台词改成对善意的夸奖，反差落在“被好好照顾也是活该”上。文字和电影截图构成完整梗图，不需要帖子标题；英文清楚，放大后可读。"
+  },
+  {
+    "id": 227,
+    "src": "assets/reviewed/0227.jpeg",
+    "title": "奶牛把晚霞和自己一起拍进去了",
+    "dimensions": [
+      "巧思",
+      "暖心"
+    ],
+    "source": "Reddit · r/wholesomememes / @that_doodleguy",
+    "sourceUrl": "https://www.reddit.com/r/wholesomememes/comments/1p8oydg/invention_of_selfie_oc/",
+    "sourceMedia": "https://preview.redd.it/invention-of-selfie-v0-x7x2heneby3g1.jpeg?width=1080&crop=smart&auto=webp&s=44224f8f72e6079db74c6a70d255725ac3ef5034",
+    "width": 1080,
+    "height": 1080,
+    "reviewed": true,
+    "primaryDimension": "巧思",
+    "secondaryDimension": "暖心",
+    "reviewNote": "四格漫画里，奶牛先想拍晚霞，接着发现自己也想入镜；最后一格的自拍镜头几乎被牛鼻子占满，晚霞还留在后面。笑点来自自拍时把自己凑得太近的视觉夸张，标题不是理解前提。画面文字清楚，英文用词简单，署名保留在原图。"
+  },
+  {
+    "id": 228,
+    "src": "assets/reviewed/0228.jpg",
+    "title": "树叔叔现在在出版社工作",
+    "dimensions": [
+      "巧思",
+      "地狱"
+    ],
+    "source": "Paul Woods（Woodsy）",
+    "sourceUrl": "https://pleated-jeans.com/2026/03/26/funny-absurd-one-panel-comics-insertbrainherecomic/",
+    "sourceMedia": "https://pleated-jeans.com/wp-content/uploads/2023/06/paul-woods-comics-3.jpg",
+    "width": 700,
+    "height": 658,
+    "reviewed": true,
+    "primaryDimension": "巧思",
+    "secondaryDimension": "地狱",
+    "reviewNote": "一棵树指着地上的树桩，说那是叔叔 Murray，如今在出版社工作。树被砍后变成纸，顺手被说成找到了出版业的工作；黑色双关由对话和树桩共同完成，不依赖标题。画面简洁可读，署名 Woodsy 保留在图上。"
   }
 ]
