@@ -4092,5 +4092,59 @@
     "primaryDimension": "巧思",
     "secondaryDimension": "地狱",
     "reviewNote": "一棵树指着地上的树桩，说那是叔叔 Murray，如今在出版社工作。树被砍后变成纸，顺手被说成找到了出版业的工作；黑色双关由对话和树桩共同完成，不依赖标题。画面简洁可读，署名 Woodsy 保留在图上。"
+  },
+  {
+    "id": 229,
+    "src": "assets/reviewed/0229.jpeg",
+    "title": "恐龙对象坚持留着那根大树枝",
+    "dimensions": [
+      "抽象",
+      "暖心"
+    ],
+    "source": "Reddit · r/webcomics / @dinosaurcomics",
+    "sourceUrl": "https://www.reddit.com/r/webcomics/comments/1l2jgik/big_stick_oc/",
+    "sourceMedia": "https://preview.redd.it/big-stick-v0-i28ugufw8r4f1.jpeg?width=1080&crop=smart&auto=webp&s=b4e267c7245ee4cbc4532f4393f86111db392011",
+    "width": 1080,
+    "height": 1350,
+    "reviewed": true,
+    "primaryDimension": "抽象",
+    "secondaryDimension": "暖心",
+    "reviewNote": "恐龙带来巢穴装饰，伴侣一听又是那根大树枝就叹气；它拿出花，对方马上开心，于是它趁机再问能不能留下树枝。最后的反复争执落在一件完全不重要的东西上，像一对恐龙认真谈恋爱，也认真吵树枝。六格对话完整，画面和英文都清楚，署名在图上。"
+  },
+  {
+    "id": 230,
+    "src": "assets/reviewed/0230.png",
+    "title": "外星人不要人，只想带走奶牛",
+    "dimensions": [
+      "抽象",
+      "犀利"
+    ],
+    "source": "Reddit · r/webcomics / @berpyrunnycomics",
+    "sourceUrl": "https://www.reddit.com/r/webcomics/comments/1l12uc3/dork_oc/",
+    "sourceMedia": "https://preview.redd.it/gpqz7wcnee4f1.png?auto=webp&s=f2b1f8713bbb5b6fa4b51d403e345b7c81c84e6e",
+    "width": 800,
+    "height": 800,
+    "reviewed": true,
+    "primaryDimension": "抽象",
+    "secondaryDimension": "犀利",
+    "reviewNote": "有人朝飞碟喊“外星人是真的，快带我走”，外星人回他“不了，你有点呆”，随后把旁边的奶牛吸走。被拒绝得太直白，目标又突然从人换成牛，三格就讲完了；不靠帖名，文字放大后清晰。"
+  },
+  {
+    "id": 231,
+    "src": "assets/reviewed/0231.png",
+    "title": "你很怪——认真？谢谢",
+    "dimensions": [
+      "巧思",
+      "暖心"
+    ],
+    "source": "Reddit · r/webcomics / @lanaflowerz",
+    "sourceUrl": "https://www.reddit.com/r/webcomics/comments/1kz44m5/weird_girl_oc/",
+    "sourceMedia": "https://preview.redd.it/weird-girl-v0-okq5w9aj7x3f1.png?width=1080&crop=smart&auto=webp&s=747de772f863cda35e88bc7da7a615b57e39cc8b",
+    "width": 1080,
+    "height": 1080,
+    "reviewed": true,
+    "primaryDimension": "巧思",
+    "secondaryDimension": "暖心",
+    "reviewNote": "路人指着蓝发女孩说她很怪，她认真回一句“真的？谢谢！”，对方才急着解释这不是夸奖。两格把批评和赞美的方向拧了一下，也让女孩坦然接住了“怪”这个标签；画面干净，英语短句清晰，不依赖标题。"
   }
 ]
