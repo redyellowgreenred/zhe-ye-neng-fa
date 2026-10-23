@@ -4002,6 +4002,41 @@
     "primaryDimension": "犀利",
     "secondaryDimension": "自嘲",
     "reviewNote": "员工说要请病假去医院，老板回“好的，打印机上的简历别忘了带”，下面配着刚打印出来的简历。老板没有明说，但“请假”和“简历”被摆在一张图里，意思已经很清楚，是对职场压力的短促吐槽；聊天和照片都完整可读。"
+  },
+  {
+    "id": 224,
+    "src": "assets/reviewed/0224.jpg",
+    "title": "减脂盘最后用来装薯条",
+    "dimensions": [
+      "巧思",
+      "自嘲"
+    ],
+    "source": "Anton Gudim（@yes_but）",
+    "sourceUrl": "https://www.digitaling.com/articles/1358580.html",
+    "sourceMedia": "https://file.digitaling.com/eImg/uimages/20250523/1747988332555417.jpg",
+    "width": 1440,
+    "height": 1440,
+    "reviewed": true,
+    "primaryDimension": "巧思",
+    "secondaryDimension": "自嘲",
+    "reviewNote": "左图是分好蔬菜、纤维和蛋白质的控量餐盘，右图却被薯条整个填满。笑点是减脂工具被拿来装最不减脂的东西，画面本身就能读懂；配图来自 Anton Gudim 的 Yes, But 系列，署名保留在原图。"
+  },
+  {
+    "id": 225,
+    "src": "assets/reviewed/0225.jpg",
+    "title": "直线3公里，导航绕成35公里",
+    "dimensions": [
+      "巧思",
+      "犀利"
+    ],
+    "source": "Anton Gudim（@yes_but）",
+    "sourceUrl": "https://www.digitaling.com/articles/1358580.html",
+    "sourceMedia": "https://file.digitaling.com/eImg/uimages/20250523/1747991257618850.jpg",
+    "width": 1440,
+    "height": 1440,
+    "reviewed": true,
+    "primaryDimension": "巧思",
+    "secondaryDimension": "犀利",
+    "reviewNote": "地图先显示目的地直线距离3公里，实际路线却绕成35公里、49分钟。左右两格把“看着很近”和“走起来很远”画成反差，不依赖原帖标题；中文读者只需看懂地图数字。原图为 Anton Gudim 的 Yes, But 系列，署名保留在图上。"
   }
-
 ]
