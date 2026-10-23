@@ -3912,5 +3912,96 @@
     "reviewNote": "一只猫趴在阳光里，窗格的光影恰好像一排电量格，配文“他完全充满电了”把晒太阳说成给猫充电。文字把光影构图变成视觉双关，画面本身就能读懂，也带着轻松的可爱感。",
     "primaryDimension": "巧思",
     "secondaryDimension": "暖心"
+  },
+  {
+    "id": 219,
+    "src": "assets/reviewed/0219.jpeg",
+    "title": "青蛙聊到秦始皇",
+    "dimensions": [
+      "地狱",
+      "巧思"
+    ],
+    "source": "LINUX DO 摸鱼周刊 Vol.005",
+    "sourceUrl": "https://linux.do/t/topic/1083246",
+    "sourceMedia": "https://cdn3.ldstatic.com/original/4X/c/f/f/cff4913a729ee86c56e015c4720596ebc4c0fc55.jpeg",
+    "width": 1024,
+    "height": 1280,
+    "reviewed": true,
+    "primaryDimension": "地狱",
+    "secondaryDimension": "巧思",
+    "reviewNote": "漫画先说人死后会在活人记忆里消失，青蛙随即想到：那我们死后还能见到秦始皇吗？把对身后世界的担心拐到秦始皇还活在历史记忆里，黑色幽默落得突然但讲得通。三格完整、字清楚，知道秦始皇就能看懂；笑点来自漫画本身。"
+  },
+  {
+    "id": 220,
+    "src": "assets/reviewed/0220.webp",
+    "title": "手机摄像头一路长成拨号盘",
+    "dimensions": [
+      "巧思",
+      "犀利"
+    ],
+    "source": "LINUX DO 摸鱼周刊 Vol.031",
+    "sourceUrl": "https://linux.do/t/topic/2852504",
+    "sourceMedia": "https://cdn3.ldstatic.com/original/4X/a/e/d/aed1d430391f4362d09d06c87cca1fdbb42a1e3c.webp",
+    "width": 600,
+    "height": 600,
+    "reviewed": true,
+    "primaryDimension": "巧思",
+    "secondaryDimension": "犀利",
+    "reviewNote": "漫画把手机背面的摄像头从一颗一路加到一圈，最后一格干脆把镜头阵列画成老式电话拨号盘，手还真的拿起听筒打电话。没有配字也能读懂，笑点同时戳中摄像头越堆越多的产品竞赛和形状相似带来的视觉联想。图中文字极少，画面清楚；图上署名 Gudim，保留作者信息。"
+  },
+  {
+    "id": 221,
+    "src": "assets/reviewed/0221.jpeg",
+    "title": "放心点，包超时",
+    "dimensions": [
+      "犀利",
+      "巧思"
+    ],
+    "source": "LINUX DO 摸鱼周刊 Vol.031",
+    "sourceUrl": "https://linux.do/t/topic/2852504",
+    "sourceMedia": "https://cdn3.ldstatic.com/original/4X/b/1/e/b1e1d4845ee1b6160a324bf142d41dd7959a0067.jpeg",
+    "width": 1080,
+    "height": 1985,
+    "reviewed": true,
+    "primaryDimension": "犀利",
+    "secondaryDimension": "巧思",
+    "reviewNote": "骑手背后的字把“饿了么”改成“饿死了么”，又把常见的安心承诺拧成“放心点，包超时”；路边禁掉头标志也在画面里，像是在给这句保证添一笔。标语清晰可读，笑点不依赖发帖标题；它是现场标语与照片拼成的梗图，不是单独一句话截图。"
+  },
+  {
+    "id": 222,
+    "src": "assets/reviewed/0222.jpeg",
+    "title": "爸爸被婴儿围栏关住了",
+    "dimensions": [
+      "巧思",
+      "自嘲"
+    ],
+    "source": "LINUX DO 摸鱼周刊 Vol.031",
+    "sourceUrl": "https://linux.do/t/topic/2852504",
+    "sourceMedia": "https://cdn3.ldstatic.com/original/4X/b/0/1/b01ca11a1cf7efbb960ccc09c8b675b6564c2931.jpeg",
+    "width": 844,
+    "height": 1280,
+    "reviewed": true,
+    "primaryDimension": "巧思",
+    "secondaryDimension": "自嘲",
+    "reviewNote": "照片里爸爸在围栏里面，孩子却站在外面；配字说自己这辈子都用错了婴儿门，评论又补上“门无法从这一侧打开”。位置颠倒本身就是笑点，父亲也顺手拿自己的失误开玩笑。主图清楚，略懂婴儿围栏即可，不需要帖子上下文。"
+  },
+  {
+    "id": 223,
+    "src": "assets/reviewed/0223.webp",
+    "title": "请病假，别忘了带简历",
+    "dimensions": [
+      "犀利",
+      "自嘲"
+    ],
+    "source": "LINUX DO 摸鱼周刊 Vol.031",
+    "sourceUrl": "https://linux.do/t/topic/2852504",
+    "sourceMedia": "https://cdn3.ldstatic.com/original/4X/e/1/2/e1200243a127de3e24bd8ccd88235d499d1e3380.webp",
+    "width": 600,
+    "height": 793,
+    "reviewed": true,
+    "primaryDimension": "犀利",
+    "secondaryDimension": "自嘲",
+    "reviewNote": "员工说要请病假去医院，老板回“好的，打印机上的简历别忘了带”，下面配着刚打印出来的简历。老板没有明说，但“请假”和“简历”被摆在一张图里，意思已经很清楚，是对职场压力的短促吐槽；聊天和照片都完整可读。"
   }
+
 ]
