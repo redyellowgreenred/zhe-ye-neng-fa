@@ -3747,5 +3747,65 @@
       "巧思",
       "抽象"
     ]
+  },
+  {
+    "id": 208,
+    "src": "assets/reviewed/0208.jpeg",
+    "title": "理科楼的 SB",
+    "dimensions": ["巧思", "抽象"],
+    "source": "LINUX DO 摸鱼周刊 Vol.003",
+    "sourceUrl": "https://linux.do/t/topic/1030429",
+    "sourceMedia": "https://cdn3.ldstatic.com/original/4X/9/c/c/9cc68f40d92177c446a8f50d70998a200d5eed38.jpeg",
+    "width": 960,
+    "height": 1280,
+    "reviewed": true,
+    "primaryDimension": "巧思",
+    "secondaryDimension": "抽象",
+    "reviewNote": "校园门牌把缩写 SB 放得很大，旁边又写出 SCIENCE BUILDING 和“理科楼”，第一眼容易按中文网语误读，英文全称随即把误会兜回来。文字完整清楚，理解门槛低；笑点来自真实门牌的缩写双读，和后期贴字的双关图不同。"
+  },
+  {
+    "id": 209,
+    "src": "assets/reviewed/0209.jpeg",
+    "title": "垃圾桶上方的工会慰问物资",
+    "dimensions": ["犀利", "抽象"],
+    "source": "LINUX DO 摸鱼周刊 Vol.003",
+    "sourceUrl": "https://linux.do/t/topic/1030429",
+    "sourceMedia": "https://cdn3.ldstatic.com/original/4X/e/c/3/ec31a247d88d147ff0b7c4ceaf8ee498a220c02b.jpeg",
+    "width": 960,
+    "height": 1280,
+    "reviewed": true,
+    "primaryDimension": "犀利",
+    "secondaryDimension": "抽象",
+    "reviewNote": "“集团工会慰问物资”的纸牌正好贴在垃圾桶上方，桶身还标着“其他垃圾”。画面像把单位福利直接归进垃圾分类，笑点由纸牌和垃圾桶的空间关系构成；字和场景都清楚，不需要帖子标题补充。它是现场摆放形成的职场讽刺，表达方式和聊天截图不同。"
+  },
+  {
+    "id": 210,
+    "src": "assets/reviewed/0210.jpeg",
+    "title": "老一辈也离不开电子产品",
+    "dimensions": ["地狱", "巧思"],
+    "source": "LINUX DO 摸鱼周刊 Vol.003",
+    "sourceUrl": "https://linux.do/t/topic/1030429",
+    "sourceMedia": "https://cdn3.ldstatic.com/original/4X/3/a/9/3a9c8e58d53e3dca299b13e6af1d044953396a10.jpeg",
+    "width": 599,
+    "height": 704,
+    "reviewed": true,
+    "primaryDimension": "地狱",
+    "secondaryDimension": "巧思",
+    "reviewNote": "对话先问年轻人是不是离不开电子产品，最后用病床上的监护设备把“离不开”字面化成生命维持，冷不防拐进生死话题。配文和画面都完整可读，黑色幽默落在现实反差上，没有指向病人开火；几乎不需要额外背景，和纯文字地狱笑话的构成不同。"
+  },
+  {
+    "id": 211,
+    "src": "assets/reviewed/0211.jpeg",
+    "title": "儿子以为显卡能换来父爱",
+    "dimensions": ["自嘲", "抽象"],
+    "source": "LINUX DO 摸鱼周刊 Vol.003（转引 Reddit）",
+    "sourceUrl": "https://linux.do/t/topic/1030429",
+    "sourceMedia": "https://cdn3.ldstatic.com/original/4X/8/7/b/87b1ce1919e343fea94a2088b7dd6ab3bd14371b.jpeg",
+    "width": 600,
+    "height": 938,
+    "reviewed": true,
+    "primaryDimension": "自嘲",
+    "secondaryDimension": "抽象",
+    "reviewNote": "配文说“我那可悲的儿子以为这样我就会爱他”，画面里的孩子把 GeForce RTX 显卡举在身前，像是在用硬件换父爱。它把父母对游戏硬件的狂热说成孩子的误会，是玩家对自己的调侃；字和主体清楚，知道显卡是电脑硬件即可读懂，和普通儿童搞怪照不同，配图本身就是笑点。"
   }
 ]
