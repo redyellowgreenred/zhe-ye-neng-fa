@@ -3752,7 +3752,10 @@
     "id": 208,
     "src": "assets/reviewed/0208.jpeg",
     "title": "理科楼的 SB",
-    "dimensions": ["巧思", "抽象"],
+    "dimensions": [
+      "巧思",
+      "抽象"
+    ],
     "source": "LINUX DO 摸鱼周刊 Vol.003",
     "sourceUrl": "https://linux.do/t/topic/1030429",
     "sourceMedia": "https://cdn3.ldstatic.com/original/4X/9/c/c/9cc68f40d92177c446a8f50d70998a200d5eed38.jpeg",
@@ -3767,7 +3770,10 @@
     "id": 209,
     "src": "assets/reviewed/0209.jpeg",
     "title": "垃圾桶上方的工会慰问物资",
-    "dimensions": ["犀利", "抽象"],
+    "dimensions": [
+      "犀利",
+      "抽象"
+    ],
     "source": "LINUX DO 摸鱼周刊 Vol.003",
     "sourceUrl": "https://linux.do/t/topic/1030429",
     "sourceMedia": "https://cdn3.ldstatic.com/original/4X/e/c/3/ec31a247d88d147ff0b7c4ceaf8ee498a220c02b.jpeg",
@@ -3782,7 +3788,10 @@
     "id": 210,
     "src": "assets/reviewed/0210.jpeg",
     "title": "老一辈也离不开电子产品",
-    "dimensions": ["地狱", "巧思"],
+    "dimensions": [
+      "地狱",
+      "巧思"
+    ],
     "source": "LINUX DO 摸鱼周刊 Vol.003",
     "sourceUrl": "https://linux.do/t/topic/1030429",
     "sourceMedia": "https://cdn3.ldstatic.com/original/4X/3/a/9/3a9c8e58d53e3dca299b13e6af1d044953396a10.jpeg",
@@ -3797,7 +3806,10 @@
     "id": 211,
     "src": "assets/reviewed/0211.jpeg",
     "title": "儿子以为显卡能换来父爱",
-    "dimensions": ["自嘲", "抽象"],
+    "dimensions": [
+      "自嘲",
+      "抽象"
+    ],
     "source": "LINUX DO 摸鱼周刊 Vol.003（转引 Reddit）",
     "sourceUrl": "https://linux.do/t/topic/1030429",
     "sourceMedia": "https://cdn3.ldstatic.com/original/4X/8/7/b/87b1ce1919e343fea94a2088b7dd6ab3bd14371b.jpeg",
@@ -3812,7 +3824,10 @@
     "id": 212,
     "src": "assets/reviewed/0212.jpeg",
     "title": "狗担心人类，猫没想起来",
-    "dimensions": ["暖心", "巧思"],
+    "dimensions": [
+      "暖心",
+      "巧思"
+    ],
     "source": "LINUX DO 摸鱼周刊 Vol.004",
     "sourceUrl": "https://linux.do/t/topic/1053194",
     "sourceMedia": "https://cdn3.ldstatic.com/original/4X/b/f/b/bfb13027c60c83c95718dcdb84f066dceede63b4.jpeg",
@@ -3827,7 +3842,10 @@
     "id": 213,
     "src": "assets/reviewed/0213.jpeg",
     "title": "禁止罚款，违者吸烟",
-    "dimensions": ["巧思", "抽象"],
+    "dimensions": [
+      "巧思",
+      "抽象"
+    ],
     "source": "LINUX DO 摸鱼周刊 Vol.004",
     "sourceUrl": "https://linux.do/t/topic/1053194",
     "sourceMedia": "https://cdn3.ldstatic.com/original/4X/5/c/4/5c417a4835aa7501447923fdfaa6418397da5f51.jpeg",
@@ -3842,7 +3860,10 @@
     "id": 214,
     "src": "assets/reviewed/0214.jpeg",
     "title": "ChatGPT 生成代码五分钟，调试二十四小时",
-    "dimensions": ["自嘲", "犀利"],
+    "dimensions": [
+      "自嘲",
+      "犀利"
+    ],
     "source": "LINUX DO 摸鱼周刊 Vol.004",
     "sourceUrl": "https://linux.do/t/topic/1053194",
     "sourceMedia": "https://cdn3.ldstatic.com/original/4X/9/4/0/9407038fdc61a768c0ac5cd7ba8cfbce8680c7cd.jpeg",
@@ -3857,7 +3878,10 @@
     "id": 215,
     "src": "assets/reviewed/0215.jpeg",
     "title": "阿基米德遇上三倍杠杆",
-    "dimensions": ["巧思", "犀利"],
+    "dimensions": [
+      "巧思",
+      "犀利"
+    ],
     "source": "LINUX DO 摸鱼周刊 Vol.004",
     "sourceUrl": "https://linux.do/t/topic/1053194",
     "sourceMedia": "https://cdn3.ldstatic.com/original/4X/f/6/d/f6d7a4709cde6f8c214d32343b690b8aec087b75.jpeg",
@@ -3872,7 +3896,10 @@
     "id": 216,
     "src": "assets/reviewed/0216.jpeg",
     "title": "为什么没有弟弟？",
-    "dimensions": ["巧思", "自嘲"],
+    "dimensions": [
+      "巧思",
+      "自嘲"
+    ],
     "source": "LINUX DO 摸鱼周刊 Vol.004",
     "sourceUrl": "https://linux.do/t/topic/1053194",
     "sourceMedia": "https://cdn3.ldstatic.com/original/4X/6/f/0/6f0f7dce3fc761c6fef9218846a9db7dbfbf383b.jpeg",
@@ -3887,7 +3914,10 @@
     "id": 217,
     "src": "assets/reviewed/0217.jpeg",
     "title": "房贷比动画反派还难还",
-    "dimensions": ["自嘲", "犀利"],
+    "dimensions": [
+      "自嘲",
+      "犀利"
+    ],
     "source": "LINUX DO 摸鱼周刊 Vol.004",
     "sourceUrl": "https://linux.do/t/topic/1053194",
     "sourceMedia": "https://cdn3.ldstatic.com/original/4X/d/2/6/d269656906caaae5878083c86e1c97c3f48667ed.jpeg",
@@ -3902,7 +3932,10 @@
     "id": 218,
     "src": "assets/reviewed/0218.jpeg",
     "title": "猫也能太阳能充电",
-    "dimensions": ["巧思", "暖心"],
+    "dimensions": [
+      "巧思",
+      "暖心"
+    ],
     "source": "LINUX DO 摸鱼周刊 Vol.004",
     "sourceUrl": "https://linux.do/t/topic/1053194",
     "sourceMedia": "https://cdn3.ldstatic.com/original/4X/1/2/d/12d756eb5075f059e6d6fbd34393bccc5b95e473.jpeg",
@@ -4596,5 +4629,789 @@
     "primaryDimension": "犀利",
     "secondaryDimension": "自嘲",
     "reviewNote": "学校评分卡里，分数看着还行，评论却只剩“史”、想要回以前的食堂等大实话。星级和学生留言的温差，顺手把学校生活吐槽完了。"
+  },
+  {
+    "src": "assets/reviewed/0257.webp",
+    "title": "流浪猫被当成“惯犯”",
+    "dimensions": [
+      "抽象",
+      "巧思"
+    ],
+    "primaryDimension": "抽象",
+    "secondaryDimension": "巧思",
+    "source": "3975 一周梗图",
+    "sourceUrl": "https://chd.7long.com/news/newsdetail?id=T7lSjdz8r0TdpaXvHQ",
+    "sourceMedia": "https://tradingimage.3975.com/forum/Uploads/Picture/2024-06-03/171739918271395.jpg",
+    "width": 516,
+    "height": 680,
+    "reviewed": true,
+    "reviewNote": "标题把一只从树上掉鼻涕的猫写成被捕惯犯；画面里其实是救援人员把它从树上捞下来，新闻腔和离谱罪名撞在一起。",
+    "id": 257
+  },
+  {
+    "src": "assets/reviewed/0258.webp",
+    "title": "Python 还是沈从文",
+    "dimensions": [
+      "巧思",
+      "抽象"
+    ],
+    "primaryDimension": "巧思",
+    "secondaryDimension": "抽象",
+    "source": "3975 一周梗图",
+    "sourceUrl": "https://chd.7long.com/news/newsdetail?id=HuIE29H0rxHdpabvFw",
+    "sourceMedia": "https://tradingimage.3975.com/forum/Uploads/Picture/2024-05-27/171678800570701.jpg",
+    "width": 647,
+    "height": 474,
+    "reviewed": true,
+    "reviewNote": "对话本来在问编程书该选 Python 还是 C，回答却报出作家沈从文；把语言和文学作者混作一个选项，错位就在最后三个字。",
+    "id": 258
+  },
+  {
+    "src": "assets/reviewed/0259.webp",
+    "title": "工蚁也在假装忙",
+    "dimensions": [
+      "自嘲",
+      "犀利"
+    ],
+    "primaryDimension": "自嘲",
+    "secondaryDimension": "犀利",
+    "source": "3975 一周梗图",
+    "sourceUrl": "https://chd.7long.com/news/newsdetail?id=HuIE29H0rxHdpabvFw",
+    "sourceMedia": "https://tradingimage.3975.com/forum/Uploads/Picture/2024-05-27/171678858541784.png",
+    "width": 690,
+    "height": 328,
+    "reviewed": true,
+    "reviewNote": "把“忙着工作只是为了别再接更多活”套到工蚁身上，最后说更尊重蚂蚁了；笑点是把打工人的自我保护投射给蚂蚁。",
+    "id": 259
+  },
+  {
+    "src": "assets/reviewed/0260.webp",
+    "title": "上班时的汤姆脑内弹幕",
+    "dimensions": [
+      "自嘲",
+      "犀利"
+    ],
+    "primaryDimension": "自嘲",
+    "secondaryDimension": "犀利",
+    "source": "3975 一周梗图",
+    "sourceUrl": "https://chd.7long.com/news/newsdetail?id=TLEE3Img+0PdpafvGg",
+    "sourceMedia": "https://tradingimage.3975.com/forum/Uploads/Picture/2024-05-20/171618275366185.jpg",
+    "width": 690,
+    "height": 683,
+    "reviewed": true,
+    "reviewNote": "汤姆一边继续上班，一边把饥饿、请假、回家和辞职挨个想完；画面上的平静和脑内弹幕形成反差。",
+    "id": 260
+  },
+  {
+    "src": "assets/reviewed/0261.webp",
+    "title": "中国地图版户型图",
+    "dimensions": [
+      "抽象",
+      "巧思"
+    ],
+    "primaryDimension": "抽象",
+    "secondaryDimension": "巧思",
+    "source": "3975 一周梗图",
+    "sourceUrl": "https://chd.7long.com/news/newsdetail?id=SLQD39D1/UPdpaDuGA",
+    "sourceMedia": "https://tradingimage.3975.com/forum/Uploads/Picture/2024-05-13/171558865191380.jpg",
+    "width": 1008,
+    "height": 1280,
+    "reviewed": true,
+    "reviewNote": "评论把省份地图当成户型图讨论，接连认真追问哪里是主卧、卫生间；一本正经地给地图分房间，荒诞感来自错用地图。",
+    "id": 261
+  },
+  {
+    "src": "assets/reviewed/0262.webp",
+    "title": "我的社交技能：名字转头就忘",
+    "dimensions": [
+      "自嘲",
+      "犀利"
+    ],
+    "primaryDimension": "自嘲",
+    "secondaryDimension": "犀利",
+    "source": "3975 一周梗图",
+    "sourceUrl": "https://chd.7long.com/news/newsdetail?id=RbUE2IqnqhTdpaHgGQ",
+    "sourceMedia": "https://tradingimage.3975.com/forum/Uploads/Picture/2024-05-06/171497781392273.jpg",
+    "width": 1080,
+    "height": 573,
+    "reviewed": true,
+    "reviewNote": "帖子把“刚问完名字就忘”和“听人说话时脑子放空”列成社交技能，标题的反话把常见尴尬说得很准。",
+    "id": 262
+  },
+  {
+    "src": "assets/reviewed/0263.webp",
+    "title": "方向不熟，贴个方向盘提示",
+    "dimensions": [
+      "自嘲",
+      "巧思"
+    ],
+    "primaryDimension": "巧思",
+    "secondaryDimension": "巧思",
+    "source": "3975 一周梗图",
+    "sourceUrl": "https://chd.7long.com/news/newsdetail?id=SbNR0Nz9+UPdpKThHg",
+    "sourceMedia": "https://tradingimage.3975.com/forum/Uploads/Picture/2024-04-08/171254275422092.jpg",
+    "width": 690,
+    "height": 1223,
+    "reviewed": true,
+    "reviewNote": "方向盘左右两侧贴着“左边”“右边”，商品图还郑重宣称有它就分得清方向；把日常认路困难变成车载辅助功能。",
+    "id": 263
+  },
+  {
+    "src": "assets/reviewed/0264.webp",
+    "title": "小时候转椅子，长大坐十小时",
+    "dimensions": [
+      "自嘲",
+      "犀利"
+    ],
+    "primaryDimension": "自嘲",
+    "secondaryDimension": "犀利",
+    "source": "3975 一周梗图",
+    "sourceUrl": "https://chd.7long.com/news/newsdetail?id=SbNR0Nz9+UPdpKThHg",
+    "sourceMedia": "https://tradingimage.3975.com/forum/Uploads/Picture/2024-04-08/171254309540394.jpg",
+    "width": 690,
+    "height": 1169,
+    "reviewed": true,
+    "reviewNote": "同一把办公椅，小时候是玩具，长大后成了坐满一天的工位；前后两句把快乐的小事翻成了上班现实。",
+    "id": 264
+  },
+  {
+    "src": "assets/reviewed/0265.webp",
+    "title": "最懒的学生被分到同一组",
+    "dimensions": [
+      "犀利",
+      "自嘲"
+    ],
+    "primaryDimension": "犀利",
+    "secondaryDimension": "自嘲",
+    "source": "3975 一周梗图",
+    "sourceUrl": "https://chd.7long.com/news/newsdetail?id=SbNR0Nz9+UPdpKThHg",
+    "sourceMedia": "https://tradingimage.3975.com/forum/Uploads/Picture/2024-04-08/171254318949448.jpg",
+    "width": 1280,
+    "height": 1280,
+    "reviewed": true,
+    "reviewNote": "几个人举着一块空白展示板，配字说他们是班上最懒的一组；画面里连报告都还没开始做，已经把结果交代了。",
+    "id": 265
+  },
+  {
+    "src": "assets/reviewed/0266.webp",
+    "title": "老鼠也得戴厨师帽",
+    "dimensions": [
+      "抽象",
+      "犀利"
+    ],
+    "primaryDimension": "抽象",
+    "secondaryDimension": "犀利",
+    "source": "3975 一周梗图",
+    "sourceUrl": "https://chd.7long.com/news/newsdetail?id=GrgCj9D3+xbdpKXkGQ",
+    "sourceMedia": "https://tradingimage.3975.com/forum/Uploads/Picture/2024-04-01/171194050889390.jpg",
+    "width": 959,
+    "height": 720,
+    "reviewed": true,
+    "reviewNote": "监控画面里一只老鼠被字幕提醒“未戴厨师帽”，把后厨卫生规定套到偷吃的老鼠身上，像在给它开违规通知。",
+    "id": 266
+  },
+  {
+    "src": "assets/reviewed/0267.webp",
+    "title": "董事长只回了三个字",
+    "dimensions": [
+      "犀利",
+      "自嘲"
+    ],
+    "primaryDimension": "犀利",
+    "secondaryDimension": "自嘲",
+    "source": "3975 一周梗图",
+    "sourceUrl": "https://chd.7long.com/news/newsdetail?id=GLMC2NGh/EXdpKfuHA",
+    "sourceMedia": "https://tradingimage.3975.com/forum/Uploads/Picture/2024-03-25/171135043840073.jpg",
+    "width": 1080,
+    "height": 803,
+    "reviewed": true,
+    "reviewNote": "同事把同姓误传成亲戚，发帖人错过否认时机后只好向理事解释；理事回“享受吧”，把谣言顺手变成了福利。",
+    "id": 267
+  },
+  {
+    "src": "assets/reviewed/0268.webp",
+    "title": "月考成绩被当成书费",
+    "dimensions": [
+      "巧思",
+      "自嘲"
+    ],
+    "primaryDimension": "巧思",
+    "secondaryDimension": "自嘲",
+    "source": "3975 一周梗图",
+    "sourceUrl": "https://chd.7long.com/news/newsdetail?id=SLdV2d+g+0TdpKDvGg",
+    "sourceMedia": "https://tradingimage.3975.com/forum/Uploads/Picture/2024-03-18/171073024437108.jpg",
+    "width": 1076,
+    "height": 822,
+    "reviewed": true,
+    "reviewNote": "“语文25、数学44”先被朋友理解成成绩，又被回成“这是书费啊”；第一次月考成绩出现时，前面的误会才落地。",
+    "id": 268
+  },
+  {
+    "src": "assets/reviewed/0269.webp",
+    "title": "“辛苦了”到底谁对谁说",
+    "dimensions": [
+      "犀利",
+      "巧思"
+    ],
+    "primaryDimension": "犀利",
+    "secondaryDimension": "巧思",
+    "source": "3975 一周梗图",
+    "sourceUrl": "https://chd.7long.com/news/newsdetail?id=SLdV2d+g+0TdpKDvGg",
+    "sourceMedia": "https://tradingimage.3975.com/forum/Uploads/Picture/2024-03-18/171073027879191.jpg",
+    "width": 1080,
+    "height": 1164,
+    "reviewed": true,
+    "reviewNote": "下属对领导说“辛苦了”，领导纠正这通常是上级对下级的说法；下属立刻回“你去忙吧”，把客套话原样翻了回去。",
+    "id": 269
+  },
+  {
+    "src": "assets/reviewed/0270.webp",
+    "title": "搬家叫来半挂车",
+    "dimensions": [
+      "抽象",
+      "自嘲"
+    ],
+    "primaryDimension": "抽象",
+    "secondaryDimension": "自嘲",
+    "source": "3975 一周梗图",
+    "sourceUrl": "https://chd.7long.com/news/newsdetail?id=S+UG34vx8xHdpKHjHg",
+    "sourceMedia": "https://tradingimage.3975.com/forum/Uploads/Picture/2024-03-11/171012483488048.png",
+    "width": 910,
+    "height": 1308,
+    "reviewed": true,
+    "reviewNote": "本来只是和闺蜜搬家，闺蜜却叫来一辆长达7.6米的半挂；照片里的大卡车把“叫个货拉拉”夸张到了最大号。",
+    "id": 270
+  },
+  {
+    "src": "assets/reviewed/0271.webp",
+    "title": "别逼我，我什么都会做",
+    "dimensions": [
+      "巧思",
+      "自嘲"
+    ],
+    "primaryDimension": "巧思",
+    "secondaryDimension": "自嘲",
+    "source": "3975 一周梗图",
+    "sourceUrl": "https://chd.7long.com/news/newsdetail?id=TuFT346mrUDdpKPvHA",
+    "sourceMedia": "https://tradingimage.3975.com/forum/Uploads/Picture/2024-03-04/170953261870771.jpg",
+    "width": 970,
+    "height": 696,
+    "reviewed": true,
+    "reviewNote": "先放狠话说什么都做得出来，别人马上追问能不能现场做盘糖醋排骨；威胁被一道家常菜拉回现实。",
+    "id": 271
+  },
+  {
+    "src": "assets/reviewed/0272.webp",
+    "title": "红孩儿的英文名",
+    "dimensions": [
+      "巧思",
+      "抽象"
+    ],
+    "primaryDimension": "巧思",
+    "secondaryDimension": "抽象",
+    "source": "3975 一周梗图",
+    "sourceUrl": "https://chd.7long.com/news/newsdetail?id=TuFT346mrUDdpKPvHA",
+    "sourceMedia": "https://tradingimage.3975.com/forum/Uploads/Picture/2024-03-04/170953269288262.jpg",
+    "width": 1170,
+    "height": 2431,
+    "reviewed": true,
+    "reviewNote": "三格漫画里红孩儿从西游故事归来，牛魔王问他名字，孩子用“Red baby”介绍自己；中文角色名被直译成尴尬英文。",
+    "id": 272
+  },
+  {
+    "src": "assets/reviewed/0273.webp",
+    "title": "最后一口的四个阶段",
+    "dimensions": [
+      "自嘲",
+      "抽象"
+    ],
+    "primaryDimension": "自嘲",
+    "secondaryDimension": "抽象",
+    "source": "3975 一周梗图",
+    "sourceUrl": "https://chd.7long.com/news/newsdetail?id=S7hZitv1rRfdp6flGg",
+    "sourceMedia": "https://tradingimage.3975.com/forum/Uploads/Picture/2024-01-29/170649243793313.png",
+    "width": 690,
+    "height": 628,
+    "reviewed": true,
+    "reviewNote": "从“就吃一点”一路拖到“我可是亲生的，还能打死我”，把半夜偷吃零食被爸妈发现的心理活动分成了四阶段。",
+    "id": 273
+  },
+  {
+    "src": "assets/reviewed/0274.webp",
+    "title": "翼装试飞前的准备工作",
+    "dimensions": [
+      "抽象",
+      "自嘲"
+    ],
+    "primaryDimension": "抽象",
+    "secondaryDimension": "自嘲",
+    "source": "3975 一周梗图",
+    "sourceUrl": "https://chd.7long.com/news/newsdetail?id=RLRTj472rRDdp6LnGg",
+    "sourceMedia": "https://tradingimage.3975.com/forum/Uploads/Picture/2024-01-15/170528470943921.jpg",
+    "width": 690,
+    "height": 1003,
+    "reviewed": true,
+    "reviewNote": "人穿着张开的翼装在屋里摆出飞行姿势，还认真问试飞前要准备什么；宏大的试飞计划先落在室内试穿。",
+    "id": 274
+  },
+  {
+    "src": "assets/reviewed/0275.webp",
+    "title": "青春赔偿到底要去哪儿",
+    "dimensions": [
+      "地狱",
+      "巧思"
+    ],
+    "primaryDimension": "地狱",
+    "secondaryDimension": "巧思",
+    "source": "3975 一周梗图",
+    "sourceUrl": "https://chd.7long.com/news/newsdetail?id=RLRTj472rRDdp6LnGg",
+    "sourceMedia": "https://tradingimage.3975.com/forum/Uploads/Picture/2024-01-15/170528565695171.jpg",
+    "width": 1080,
+    "height": 934,
+    "reviewed": true,
+    "reviewNote": "帖子说被篮球砸哭后，对方用整个青春来赔；评论一句“是去坐牢了吗”，把“赔青春”拐成了刑期。",
+    "id": 275
+  },
+  {
+    "src": "assets/reviewed/0276.webp",
+    "title": "凌晨四点五十二还在搜蚊子",
+    "dimensions": [
+      "自嘲",
+      "抽象"
+    ],
+    "primaryDimension": "自嘲",
+    "secondaryDimension": "抽象",
+    "source": "3975 一周梗图",
+    "sourceUrl": "https://chd.7long.com/news/newsdetail?id=HuZW3dDy+0bdpqrjGA",
+    "sourceMedia": "https://tradingimage.3975.com/forum/Uploads/Picture/2024-01-08/170467928913019.png",
+    "width": 690,
+    "height": 466,
+    "reviewed": true,
+    "reviewNote": "“求知欲爆炸的一天”配着凌晨4:52搜索怎么抓房间里的蚊子，配图的人还举着小网兜；认真研究和熬夜打蚊子形成反差。",
+    "id": 276
+  },
+  {
+    "src": "assets/reviewed/0277.webp",
+    "title": "看价格当场去世",
+    "dimensions": [
+      "巧思",
+      "自嘲"
+    ],
+    "primaryDimension": "巧思",
+    "secondaryDimension": "自嘲",
+    "source": "3975 一周梗图",
+    "sourceUrl": "https://chd.7long.com/news/newsdetail?id=SrlZjdj9rUbdpqfnFg",
+    "sourceMedia": "https://tradingimage.3975.com/forum/Uploads/Picture/2023-12-15/170262075948505.png",
+    "width": 640,
+    "height": 341,
+    "reviewed": true,
+    "reviewNote": "别人买东西“当场去试”，自己却“当场去世”；“试/世”一字之差，把看见价格后的反应写成了谐音梗。",
+    "id": 277
+  },
+  {
+    "src": "assets/reviewed/0278.webp",
+    "title": "少奋斗十年，先扣十年寿命",
+    "dimensions": [
+      "地狱",
+      "巧思"
+    ],
+    "primaryDimension": "地狱",
+    "secondaryDimension": "巧思",
+    "source": "3975 一周梗图",
+    "sourceUrl": "https://chd.7long.com/news/newsdetail?id=SrlZjdj9rUbdpqfnFg",
+    "sourceMedia": "https://tradingimage.3975.com/forum/Uploads/Picture/2023-12-15/170262098453675.png",
+    "width": 690,
+    "height": 258,
+    "reviewed": true,
+    "reviewNote": "神灯问要不要少奋斗十年，用户答“想”，精灵便从生死簿上减掉十年；愿望被按最字面的方式兑现。",
+    "id": 278
+  },
+  {
+    "src": "assets/reviewed/0279.webp",
+    "title": "骰子怎么算都能考研上岸",
+    "dimensions": [
+      "自嘲",
+      "抽象"
+    ],
+    "primaryDimension": "自嘲",
+    "secondaryDimension": "抽象",
+    "source": "3975 一周梗图",
+    "sourceUrl": "https://chd.7long.com/news/newsdetail?id=SrlZjdj9rUbdpqfnFg",
+    "sourceMedia": "https://tradingimage.3975.com/forum/Uploads/Picture/2023-12-15/170262109822785.png",
+    "width": 690,
+    "height": 1218,
+    "reviewed": true,
+    "reviewNote": "聊天里先说单数、双数各自都能考研上岸，随后又把骰子点数逐个解释成上岸；占卜绕一圈只是给自己打气。",
+    "id": 279
+  },
+  {
+    "src": "assets/reviewed/0280.webp",
+    "title": "冬天让大家文明起来",
+    "dimensions": [
+      "巧思",
+      "犀利"
+    ],
+    "primaryDimension": "巧思",
+    "secondaryDimension": "犀利",
+    "source": "3975 一周梗图",
+    "sourceUrl": "https://chd.7long.com/news/newsdetail?id=SrcD3oqj/kDdpqHhGg",
+    "sourceMedia": "https://tradingimage.3975.com/forum/Uploads/Picture/2023-12-08/170201232436111.jpg",
+    "width": 1290,
+    "height": 1607,
+    "reviewed": true,
+    "reviewNote": "标题说冬天让人文明，画面再放大后却是手套里竖起的中指；寒冷把粗口手势包成了礼貌版本。",
+    "id": 280
+  },
+  {
+    "src": "assets/reviewed/0281.webp",
+    "title": "指纹还没查，整箱奶没了",
+    "dimensions": [
+      "犀利",
+      "抽象"
+    ],
+    "primaryDimension": "犀利",
+    "secondaryDimension": "抽象",
+    "source": "3975 一周梗图",
+    "sourceUrl": "https://chd.7long.com/news/newsdetail?id=SrcD3oqj/kDdpqHhGg",
+    "sourceMedia": "https://tradingimage.3975.com/forum/Uploads/Picture/2023-12-08/170201246593325.png",
+    "width": 690,
+    "height": 513,
+    "reviewed": true,
+    "reviewNote": "领导先说牛奶箱上能查指纹，下午回办公室时连箱子都不见了；偷奶的人把“销毁证据”做成了整箱搬走。",
+    "id": 281
+  },
+  {
+    "src": "assets/reviewed/0282.webp",
+    "title": "轻断食第一天：十一根玉米",
+    "dimensions": [
+      "自嘲",
+      "犀利"
+    ],
+    "primaryDimension": "自嘲",
+    "secondaryDimension": "犀利",
+    "source": "3975 一周梗图",
+    "sourceUrl": "https://chd.7long.com/news/newsdetail?id=GORTiov2/EfdpqLmHg",
+    "sourceMedia": "https://tradingimage.3975.com/forum/Uploads/Picture/2023-12-01/170139455747030.jpg",
+    "width": 657,
+    "height": 1280,
+    "reviewed": true,
+    "reviewNote": "帖子宣布轻断食第一天只吃玉米，盘点下来却已经十一根，还担心明天会不会掉秤；计划和食量完全不在一条线上。",
+    "id": 282
+  },
+  {
+    "src": "assets/reviewed/0283.webp",
+    "title": "三千工资买八千羽绒服",
+    "dimensions": [
+      "自嘲",
+      "暖心"
+    ],
+    "primaryDimension": "自嘲",
+    "secondaryDimension": "暖心",
+    "source": "3975 一周梗图",
+    "sourceUrl": "https://chd.7long.com/news/newsdetail?id=GORTiov2/EfdpqLmHg",
+    "sourceMedia": "https://tradingimage.3975.com/forum/Uploads/Picture/2023-12-01/170139808599906.png",
+    "width": 1017,
+    "height": 355,
+    "reviewed": true,
+    "reviewNote": "想用三千月薪买八千羽绒服，妈妈给出的建议却是干脆休息两个月，等天暖了再上班；算账方式意外地偏向孩子。",
+    "id": 283
+  },
+  {
+    "src": "assets/reviewed/0284.webp",
+    "title": "哈尔滨冰雪大世界的南北时长",
+    "dimensions": [
+      "自嘲",
+      "抽象"
+    ],
+    "primaryDimension": "抽象",
+    "secondaryDimension": "抽象",
+    "source": "3975 一周梗图",
+    "sourceUrl": "https://chd.7long.com/news/newsdetail?id=GORTiov2/EfdpqLmHg",
+    "sourceMedia": "https://tradingimage.3975.com/forum/Uploads/Picture/2023-12-01/170139478439413.jpg",
+    "width": 1080,
+    "height": 1010,
+    "reviewed": true,
+    "reviewNote": "帖文说南方朋友能在冰雪大世界玩两小时，东北人一小时就出来；把抗冻能力写成游客续航对比。",
+    "id": 284
+  },
+  {
+    "src": "assets/reviewed/0285.webp",
+    "title": "心理医生和算命先生的诊断",
+    "dimensions": [
+      "犀利",
+      "巧思"
+    ],
+    "primaryDimension": "犀利",
+    "secondaryDimension": "巧思",
+    "source": "3975 一周梗图",
+    "sourceUrl": "https://chd.7long.com/news/newsdetail?id=GORTiov2/EfdpqLmHg",
+    "sourceMedia": "https://tradingimage.3975.com/forum/Uploads/Picture/2023-12-01/170139494627927.jpg",
+    "width": 1080,
+    "height": 534,
+    "reviewed": true,
+    "reviewNote": "同一个人既讨厌老师又讨厌领导，心理医生说是不适应环境，算命先生却说有帝王之相；诊断的角度一换，结论就反了。",
+    "id": 285
+  },
+  {
+    "src": "assets/reviewed/0286.webp",
+    "title": "成年人听见世界末日",
+    "dimensions": [
+      "犀利",
+      "抽象"
+    ],
+    "primaryDimension": "犀利",
+    "secondaryDimension": "抽象",
+    "source": "3975 一周梗图",
+    "sourceUrl": "https://chd.7long.com/news/newsdetail?id=GORTiov2/EfdpqLmHg",
+    "sourceMedia": "https://tradingimage.3975.com/forum/Uploads/Picture/2023-12-01/170139530555134.jpg",
+    "width": 1280,
+    "height": 774,
+    "reviewed": true,
+    "reviewNote": "帖子感叹救世主总是中学生，因为告诉成年人世界要毁灭，他们还会追问“还会有这种好事？”一句话把疲惫写成了反讽。",
+    "id": 286
+  },
+  {
+    "src": "assets/reviewed/0287.webp",
+    "title": "努力前是“史”，努力后成了神",
+    "dimensions": [
+      "自嘲",
+      "巧思"
+    ],
+    "primaryDimension": "巧思",
+    "secondaryDimension": "巧思",
+    "source": "3975 一周梗图",
+    "sourceUrl": "https://chd.7long.com/news/newsdetail?id=GOMC0Nr2+BDdoarjHQ",
+    "sourceMedia": "https://tradingimage.3975.com/forum/Uploads/Picture/2023-11-24/170081212852652.jpg",
+    "width": 2000,
+    "height": 960,
+    "reviewed": true,
+    "reviewNote": "前一张成绩只剩一个“史”字，后一张却换成游戏里的神将；靠字面上的“史”和夸张战绩做前后对照。",
+    "id": 287
+  },
+  {
+    "src": "assets/reviewed/0288.webp",
+    "title": "王老师打成了王拉屎",
+    "dimensions": [
+      "自嘲",
+      "抽象"
+    ],
+    "primaryDimension": "自嘲",
+    "secondaryDimension": "抽象",
+    "source": "3975 一周梗图",
+    "sourceUrl": "https://chd.7long.com/news/newsdetail?id=GOMC0Nr2+BDdoarjHQ",
+    "sourceMedia": "https://tradingimage.3975.com/forum/Uploads/Picture/2023-11-24/170081223212742.jpg",
+    "width": 1080,
+    "height": 2024,
+    "reviewed": true,
+    "reviewNote": "群聊里想问能不能提前一天返校，输入法却把“王老师”打成“王拉屎”；发出去才发现，社死也能来自手速。",
+    "id": 288
+  },
+  {
+    "src": "assets/reviewed/0289.webp",
+    "title": "英语不好，但鞋码36",
+    "dimensions": [
+      "巧思",
+      "自嘲"
+    ],
+    "primaryDimension": "巧思",
+    "secondaryDimension": "自嘲",
+    "source": "3975 一周梗图",
+    "sourceUrl": "https://chd.7long.com/news/newsdetail?id=SrcDj9v9qhPdoaTvHg",
+    "sourceMedia": "https://tradingimage.3975.com/forum/Uploads/Picture/2023-11-17/170018795743741.jpg",
+    "width": 954,
+    "height": 1816,
+    "reviewed": true,
+    "reviewNote": "对方说英语或鞋码会一个就行，聊天者说英语不好，马上回了“36”；问题里两个选项被当成了一个答案。",
+    "id": 289
+  },
+  {
+    "src": "assets/reviewed/0290.png",
+    "title": "Duty Calls",
+    "dimensions": [
+      "自嘲",
+      "犀利"
+    ],
+    "primaryDimension": "自嘲",
+    "secondaryDimension": "犀利",
+    "source": "xkcd / Randall Munroe · CC BY-NC 2.5",
+    "sourceUrl": "https://xkcd.com/386/",
+    "sourceMedia": "https://imgs.xkcd.com/comics/duty_calls.png",
+    "licenseUrl": "https://xkcd.com/license.html",
+    "width": 300,
+    "height": 330,
+    "reviewed": true,
+    "reviewNote": "朋友催他上床睡觉，他却说有人在网上讲错了；“离开就会让错误继续存在”把网上争论写成了紧急任务。",
+    "id": 290
+  },
+  {
+    "src": "assets/reviewed/0291.png",
+    "title": "I'm An Idiot",
+    "dimensions": [
+      "自嘲",
+      "巧思"
+    ],
+    "primaryDimension": "自嘲",
+    "secondaryDimension": "巧思",
+    "source": "xkcd / Randall Munroe · CC BY-NC 2.5",
+    "sourceUrl": "https://xkcd.com/530/",
+    "sourceMedia": "https://imgs.xkcd.com/comics/im_an_idiot.png",
+    "licenseUrl": "https://xkcd.com/license.html",
+    "width": 654,
+    "height": 387,
+    "reviewed": true,
+    "reviewNote": "被锁在门外的人依次尝试打手机、用电脑语音发消息，最后才想起门铃；折腾半天，解法就在门边。",
+    "id": 291
+  },
+  {
+    "src": "assets/reviewed/0292.png",
+    "title": "Correlation",
+    "dimensions": [
+      "巧思",
+      "犀利"
+    ],
+    "primaryDimension": "巧思",
+    "secondaryDimension": "犀利",
+    "source": "xkcd / Randall Munroe · CC BY-NC 2.5",
+    "sourceUrl": "https://xkcd.com/552/",
+    "sourceMedia": "https://imgs.xkcd.com/comics/correlation.png",
+    "licenseUrl": "https://xkcd.com/license.html",
+    "width": 459,
+    "height": 185,
+    "reviewed": true,
+    "reviewNote": "角色以为相关性代表因果，上完统计课后改口；朋友问课程有没有帮助，他回答“也许吧”，把课上知识当场用歪。",
+    "id": 292
+  },
+  {
+    "src": "assets/reviewed/0293.png",
+    "title": "Time Travel",
+    "dimensions": [
+      "抽象",
+      "自嘲"
+    ],
+    "primaryDimension": "抽象",
+    "secondaryDimension": "自嘲",
+    "source": "xkcd / Randall Munroe · CC BY-NC 2.5",
+    "sourceUrl": "https://xkcd.com/630/",
+    "sourceMedia": "https://imgs.xkcd.com/comics/time_travel.png",
+    "licenseUrl": "https://xkcd.com/license.html",
+    "width": 266,
+    "height": 311,
+    "reviewed": true,
+    "reviewNote": "时间旅行者每封信都以“亲爱的未来某某”开头，收信人终于嫌弃这个固定开场；笑点落在反复出现的科幻套话。",
+    "id": 293
+  },
+  {
+    "src": "assets/reviewed/0294.png",
+    "title": "Honor Societies",
+    "dimensions": [
+      "巧思",
+      "犀利"
+    ],
+    "primaryDimension": "巧思",
+    "secondaryDimension": "犀利",
+    "source": "xkcd / Randall Munroe · CC BY-NC 2.5",
+    "sourceUrl": "https://xkcd.com/703/",
+    "sourceMedia": "https://imgs.xkcd.com/comics/honor_societies.png",
+    "licenseUrl": "https://xkcd.com/license.html",
+    "width": 740,
+    "height": 251,
+    "reviewed": true,
+    "reviewNote": "主角创办“同义反复社”，规则第一条就是“同义反复社的第一条规则”；社团规则把自己又说了一遍。",
+    "id": 294
+  },
+  {
+    "src": "assets/reviewed/0295.png",
+    "title": "Computer Problems",
+    "dimensions": [
+      "自嘲",
+      "抽象"
+    ],
+    "primaryDimension": "自嘲",
+    "secondaryDimension": "抽象",
+    "source": "xkcd / Randall Munroe · CC BY-NC 2.5",
+    "sourceUrl": "https://xkcd.com/722/",
+    "sourceMedia": "https://imgs.xkcd.com/comics/computer_problems.png",
+    "licenseUrl": "https://xkcd.com/license.html",
+    "width": 587,
+    "height": 254,
+    "reviewed": true,
+    "reviewNote": "有人花一生按按钮调灯光，灯光图案乱了，旁人建议再多按几个按钮；把故障排查写成了继续乱按。",
+    "id": 295
+  },
+  {
+    "src": "assets/reviewed/0296.png",
+    "title": "Password Strength",
+    "dimensions": [
+      "巧思",
+      "犀利"
+    ],
+    "primaryDimension": "巧思",
+    "secondaryDimension": "犀利",
+    "source": "xkcd / Randall Munroe · CC BY-NC 2.5",
+    "sourceUrl": "https://xkcd.com/936/",
+    "sourceMedia": "https://imgs.xkcd.com/comics/password_strength.png",
+    "licenseUrl": "https://xkcd.com/license.html",
+    "width": 740,
+    "height": 601,
+    "reviewed": true,
+    "reviewNote": "漫画对比复杂但难记的密码和“correct horse battery staple”这类好记的随机词组，最后反转到人类记忆与电脑破解能力的错位。",
+    "id": 296
+  },
+  {
+    "src": "assets/reviewed/0297.png",
+    "title": "Ten Thousand",
+    "dimensions": [
+      "巧思",
+      "暖心"
+    ],
+    "primaryDimension": "巧思",
+    "secondaryDimension": "暖心",
+    "source": "xkcd / Randall Munroe · CC BY-NC 2.5",
+    "sourceUrl": "https://xkcd.com/1053/",
+    "sourceMedia": "https://imgs.xkcd.com/comics/ten_thousand.png",
+    "licenseUrl": "https://xkcd.com/license.html",
+    "width": 462,
+    "height": 316,
+    "reviewed": true,
+    "reviewNote": "每天都有一万人第一次听说某件事；漫画主角遇见的正好是今天的“一万人”，终于轮到自己把冷知识讲给别人。",
+    "id": 297
+  },
+  {
+    "src": "assets/reviewed/0298.png",
+    "title": "Upside-Down Map",
+    "dimensions": [
+      "巧思",
+      "抽象"
+    ],
+    "primaryDimension": "巧思",
+    "secondaryDimension": "抽象",
+    "source": "xkcd / Randall Munroe · CC BY-NC 2.5",
+    "sourceUrl": "https://xkcd.com/1500/",
+    "sourceMedia": "https://imgs.xkcd.com/comics/upside_down_map.png",
+    "licenseUrl": "https://xkcd.com/license.html",
+    "width": 740,
+    "height": 418,
+    "reviewed": true,
+    "reviewNote": "世界地图被倒着画，配文说它会改变你看世界的角度；地图方向的改变和“换个角度看世界”互相扣合。",
+    "id": 298
+  },
+  {
+    "src": "assets/reviewed/0299.png",
+    "title": "I Could Care Less",
+    "dimensions": [
+      "巧思",
+      "犀利"
+    ],
+    "primaryDimension": "巧思",
+    "secondaryDimension": "犀利",
+    "source": "xkcd / Randall Munroe · CC BY-NC 2.5",
+    "sourceUrl": "https://xkcd.com/1576/",
+    "sourceMedia": "https://imgs.xkcd.com/comics/i_could_care_less.png",
+    "licenseUrl": "https://xkcd.com/license.html",
+    "width": 740,
+    "height": 794,
+    "reviewed": true,
+    "reviewNote": "漫画围绕“I could care less”展开一连串误解，最后把语言说成“辉煌的混乱”；争论表达方式本身成了笑点。",
+    "id": 299
   }
 ]
