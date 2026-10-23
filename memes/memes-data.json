@@ -3675,5 +3675,41 @@
     ],
     "reviewed": true,
     "reviewNote": "图用一个巨大的圆和远处的小点对比“我叫老板的人”与“我真正的老板”，把便利店随口称呼和现实老板的关系做成视觉比例梗。画面文字清楚，不依赖圈内知识；笑点来自图形比例，不是反应表情。"
+  },
+  {
+    "dimensions": [
+      "抽象",
+      "巧思"
+    ],
+    "src": "assets/reviewed/0204.webp",
+    "reviewNote": "一张像鱼又像鳄的远古生物配上“买了下午四点的航班，四亿年前的我爸：抓紧进化，要不然赶不上航班了”。把进化的漫长时间和赶航班的催促接在一起，错位很具体；主体和字都看得清，背景需求低。它是荒诞时间错位，不是单靠动物表情。",
+    "title": "四亿年前的爸爸催我赶飞机",
+    "sourceMedia": "https://tradingimage.3975.com/forum/Uploads/Picture/2024-05-06/171497808917320.jpg",
+    "height": 555,
+    "width": 690,
+    "sourceUrl": "https://chd.7long.com/news/newsdetail?id=RbUE2IqnqhTdpaHgGQ",
+    "source": "3975 一周梗图",
+    "id": 204,
+    "reviewed": true,
+    "primaryDimension": "抽象",
+    "secondaryDimension": "巧思"
+  },
+  {
+    "dimensions": [
+      "巧思",
+      "抽象"
+    ],
+    "src": "assets/reviewed/0205.webp",
+    "reviewNote": "化学方程式把氧化镍还原成镍，下面写“造镍啊”，借 Ni 的读音拐到“造孽啊”。字和反应式都清楚，得知道 Ni 是镍才会完整接上；笑点由方程式参与构成，是图像文字梗而非单独一句段子。",
+    "title": "化学方程式：造镍啊",
+    "sourceMedia": "https://tradingimage.3975.com/forum/Uploads/Picture/2024-02-26/170891399165369.png",
+    "height": 395,
+    "width": 584,
+    "sourceUrl": "https://chd.7long.com/news/newsdetail?id=TuQC3N2k/xfdp6rgFg",
+    "source": "3975 一周梗图",
+    "id": 205,
+    "reviewed": true,
+    "primaryDimension": "巧思",
+    "secondaryDimension": "抽象"
   }
 ]
