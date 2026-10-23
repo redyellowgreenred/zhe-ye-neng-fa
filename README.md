@@ -4,6 +4,10 @@
 
 **直接玩：https://redyellowgreenred.github.io/zhe-ye-neng-fa/**
 
+**笑点成分测试：https://redyellowgreenred.github.io/zhe-ye-neng-fa/memes/**
+
+30 轮四选一，从网上收集的梗图里挑出最戳自己的，生成六维图、代表梗图与分享报告，可打包下载本局选中的 30 张。题库图片选自 [ChineseBQB](https://github.com/zhaoolee/ChineseBQB) 的 116 个分类；原图已转为 WebP，`memes/memes-data.json` 记录对应来源路径。平均参照为虚构的娱乐值。
+
 - 单人猜题，或双人同屏轮流作答，双方锁定后一起揭晓。
 - 好友联机：房主选领域、创建房间，把邀请链接发给好友；两人各用自己的设备作答，同步揭晓和计分。
 - 每局 10 题，每题 10 分。
